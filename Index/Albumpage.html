@@ -1,136 +1,620 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Layout</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
-      href="../BW2-Spotify-assets/assets/css/albumpage.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/BW2-Spotify-assets/assets/css/homepage.css">
+    <link rel="stylesheet" href="../BW2-Spotify-assets/assets/css/footer.css">
+    <link
+    rel="stylesheet"
+    href="../BW2-Spotify-assets/assets/css/albumpage.css"
+  />
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      .sidebar,
+      .right-sidebar {
+        background: #000;
+        padding: 15px;
+        height: 100vh;
+      }
+
+      .navbar-nav {
+        font-size: 0.9rem;
+      }
+
+      .scroll-container {
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      .left-collapsed .nav-link,
+      .left-collapsed img,
+      .left-collapsed .navbar-nav .nav-item i + a {
+        display: none !important;
+      }
+
+      .left-collapsed {
+        width: 60px !important;
+        padding-left: 0 !important;
+      }
+
+      /* Sidebar destra - Toggle */
+      .right-collapsed .friend-activity,
+      .right-collapsed .bi-person-plus,
+      .right-collapsed .bi-x-lg {
+        display: none !important;
+      }
+
+      .toggle-pointer {
+        cursor: pointer;
+      }
+
+      .friend-activity {
+        padding-bottom: 1.5rem;
+      }
+
+      .track-info {
+        font-size: 0.7rem;
+        color: rgb(179, 179, 179);
+      }
+
+      .username {
+        font-size: 0.8rem;
+        color: rgb(179, 179, 179);
+      }
+
+      .timestamp {
+        font-size: 0.7rem;
+        color: rgb(179, 179, 179);
+      }
+    </style>
   </head>
-  <body class="bg-black">
-    <main>
-      <div class="container">
-        <div class="row">
-          <div
-            class=" mt-2 p-0 d-flex justify-content-between align-items-center"
-          >
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-arrow-left-circle-fill ms-4 mt-2"
-                viewBox="0 0 16 16"
-                id="arrow-left"
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="leftSidebar"
+          class="col-md-2 scroll-container d-md-block d-none fw-bold px-3 sidebar"
+          style="color: rgb(179, 179, 179)"
+        >
+          <i
+            id="toggleLeft"
+            class="bi bi-three-dots fs-3 toggle-pointer"
+            style="color: white"
+          ></i>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-house-door-fill fs-4"></i>
+              <a class="nav-link mx-3" style="color: white" href="#">Home</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-search fs-4"></i>
+              <a class="nav-link mx-3" href="#">Cerca</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-music-note-list fs-4"></i>
+              <a class="nav-link mx-3" href="#">La tua Libreria</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav me-auto mt-4">
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-plus-square-fill fs-4"></i>
+              <a class="nav-link mx-3" href="#">Crea playlist</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <img
+                src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da840c489c9523ae48b2c3d96177"
+                class="mt-2"
+                height="25"
+                alt="favorites-logo"
+              />
+              <a class="nav-link mx-3" href="#">Brani che ti piacciono</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i
+                class="bi bi-bookmark-fill fs-4"
+                style="color: rgb(11, 198, 97)"
+              ></i>
+              <a class="nav-link mx-3" href="#">I tuoi episodi</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav me-auto fw-light mt-4">
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🤘🏻 Enter Sandman</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">👻 Forever Ghost</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎸 Guitar Hero III</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎉 Be The Young</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >⚡️ Early stage emily syndrome (sett-ott 2022)</a
               >
-                <path
-                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-arrow-right-circle-fill ms-1 mt-2"
-                viewBox="0 0 16 16"
-                id="arrow-right"
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎉 Be The Young</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >😶 "..." cit. Kimiko (lug-ago 2022)</a
               >
-                <path
-                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
-                />
-              </svg>
-            </div>
-            <div class="dropdown">
-              <button
-                class="btn bg-black rounded-5 mx-4 mt-2 text-white dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                id="dropdown"
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">💃🏻🕺🏻🩰 Saggio vibes</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >🔥 Main character energy (mag-giu)</a
               >
-                <i class="bi bi-person-circle"></i>
-                Lidia Nautilus...
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="container mt-4 ms-0">
-            <div class="row ">
-                <div class=" col col-12 col-md-4 col-lg-4 text-center">
-                    <img src="../BW2-Spotify-assets/assets/imgs/search/image-13.jpeg" alt="Album Cover" class="album-cover " width="80%">
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">☠️ The fucking mood</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🛬 Landing page(mar-apr 2022)</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">😆 2021 lol</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >🤔 Cosa cazzo vuol dire questa aftermazione (gen-feb 2021)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🍯 Honey and glass (nov-dic 2021)</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🦍 (Revenge) Training Arc</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >👾 Minecraft e Nintendo Switch (sep-oct 2021)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🍑 Culo 2021</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main class="col text-center">
+          <div class="container">
+            <div class="row">
+              <div
+                class=" mt-2 p-0 d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentColor"
+                    class="bi bi-arrow-left-circle-fill ms-4 mt-2"
+                    viewBox="0 0 16 16"
+                    id="arrow-left"
+                  >
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentColor"
+                    class="bi bi-arrow-right-circle-fill ms-1 mt-2"
+                    viewBox="0 0 16 16"
+                    id="arrow-right"
+                  >
+                    <path
+                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                    />
+                  </svg>
                 </div>
-                <div class="col-md-8 album-info">
-                    <p class="mt-5 text-light" id="album"><b>ALBUM</b></p>
-                    <h1 class="text-light" id="album-title">Gioventù Brucata</h1>
-                    <div class="mt-5">
-               <p class="text-light" > <img src="../BW2-Spotify-assets/assets/imgs/search/image-15.jpg"  class=" text-light " id="anno-uscita"> Pinguini tattici Nucleari</p>
-                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn bg-black rounded-5 mx-4 mt-2 text-white dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    id="dropdown"
+                  >
+                    <i class="bi bi-person-circle"></i>
+                    Lidia Nautilus...
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                  </ul>
                 </div>
               </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <button class="play-btn mt-5 ms-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right-fill  " viewBox="0 0 16 16">
-                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                </svg>
-            </button>
-            <button class=" heart-btn mt-5 ms-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart text-light " viewBox="0 0 16 16">
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-              </svg>
-            </button>
-            <button class="arrow-btn mt-5 ms-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle " viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+              <div class="container mt-4 ms-0">
+                <div class="row ">
+                    <div class=" col col-12 col-md-4 col-lg-4 text-center">
+                        <img src="../BW2-Spotify-assets/assets/imgs/search/image-13.jpeg" alt="Album Cover" class="album-cover " width="80%">
+                    </div>
+                    <div class="col-md-8 album-info">
+                        <p class="mt-5 text-light" id="album"><b>ALBUM</b></p>
+                        <h1 class="text-light" id="album-title">Gioventù Brucata</h1>
+                        <div class="mt-5">
+                   <p class="text-light" > <img src="../BW2-Spotify-assets/assets/imgs/search/image-15.jpg"  class=" text-light " id="anno-uscita"> Pinguini tattici Nucleari</p>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <button class="play-btn mt-5 ms-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right-fill  " viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                </button>
+                <button class=" heart-btn mt-5 ms-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart text-light " viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
                   </svg>
                 </button>
-               <button class="doots-btn mt-5 ms-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
-                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                <button class="arrow-btn mt-5 ms-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle " viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                      </svg>
+                    </button>
+                   <button class="doots-btn mt-5 ms-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
+                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                    </svg>
+                   </button>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <h2 class="text-light fs-6 ps-4 mt-4  ms-3"># TITOLO</h2>
+                <h2 class="text-light fs-6 ps-4 mt-4 ">RIPRODUZIONI</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-clock text-light mt-4 mx-5" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                 </svg>
-               </button>
-          </div>
-          <div class="d-flex align-items-center justify-content-between">
-            <h2 class="text-light fs-6 ps-4 mt-4  ms-3"># TITOLO</h2>
-            <h2 class="text-light fs-6 ps-4 mt-4 ">RIPRODUZIONI</h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-clock text-light mt-4 mx-5" viewBox="0 0 16 16">
-              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-            </svg>
-          </div>
-          <hr class="text-light mt-3">
-          <div class="d-flex" id="list-music">
-            <ol>
-              <li class="text-light fs-5 ms-4">ciao
+              </div>
+              <hr class="text-light mt-3">
+              <div class="d-flex" id="list-music">
+                <ol>
+                  <li class="text-light fs-5 ms-4">ciao
+    
+                  </li>
+                </ol>
+              </div>
+        </main>
 
-              </li>
-            </ol>
+        <nav
+          id="rightSidebar"
+          class="scroll-container d-md-block d-none pt-4 right-sidebar col-md-2"
+        >
+          <div class="d-flex">
+            <h5
+              id="toggleRight"
+              class="me-auto fw-bold toggle-pointer"
+              style="color: white"
+            >
+              Attività amici
+            </h5>
+            <i
+              class="bi bi-person-plus mx-1 fs-5"
+              style="color: rgb(179, 179, 179)"
+            ></i>
+            <i
+              id="closeRight"
+              class="bi bi-x-lg mx-1 fs-5 toggle-pointer"
+              style="color: rgb(179, 179, 179)"
+            ></i>
           </div>
 
-  </main>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
-</body>
-</html>
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://imagedelivery.net/LBWXYQ-XnKSYxbZ-NuYGqQ/8f6879a8-aa3e-432d-0411-6064cdeb7700/avatarhd"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Joel Miller"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Joel Miller
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  2 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                One of These Nights • The Eagles
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">One of These Nights</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://www.zbrushcentral.com/uploads/default/original/4X/f/f/b/ffbe57040d71003198861ea0bbec3de8bf05f1af.jpeg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Ellie Williams"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1" style="color: rgb(179, 179, 179)">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Ellie Williams
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  1 ora fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Chasing Cars • Snow Patrol
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Eyes Open</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://i.pinimg.com/736x/be/fb/6f/befb6f5e21b22f3a816eea5276b63d9b.jpg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Eren Jaeger"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Eren Jaeger
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  35 min fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                I Want to Break Free • Queen
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">The Works</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://i.pinimg.com/736x/ee/4c/d6/ee4cd699956f8dcf3134e120656b6ddd.jpg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Eren Jaeger"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Armin Arlert
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  10 min fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Ocean • Led Zeppelin
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Houses Of The Holy</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://images.everyeye.it/img-notizie/l-attacco-giganti-cosplay-comandante-hanji-zoe-pioggia-v3-628353-1200x1200.webp"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Zoe Hanji"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Zoe Hanji
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  3 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Cough Syrup • Young the Giant
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Young the Giant</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://preview.redd.it/03ch231bhabd1.jpeg?width=640&crop=smart&auto=webp&s=813ba9b15272899ae0b751156e3ee3ab60db0554"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Levi Ackerman"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Levi Ackerman
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  6 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Dude (Looks Like a Lady) • Aerosmith
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Permanent Vacation</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <footer>
+      <!-- Left: Song Info -->
+      <div class="d-flex align-items-center song-info">
+        <img src="https://i.scdn.co/image/ab67616d0000b273c40cc20a0a44de4d786085cb" alt="cover" class="me-2">
+        <div class="song-details">
+          <div class="song-title">Fat Funny Friend</div>
+          <div class="artist">Maddie Zahm</div>
+        </div>
+        <i class="bi bi-heart like-button"></i>
+      </div>
   
-                 
-                   
-                  
+      <!-- Center: Player Controls -->
+      <div class="player-controls">
+        <div class="player-buttons">
+          <i class="bi bi-shuffle"></i>
+          <i class="bi bi-skip-backward-fill"></i>
+          <i class="bi bi-play-circle-fill"></i>
+          <i class="bi bi-skip-forward-fill"></i>
+          <i class="bi bi-repeat"></i>
+        </div>
+        <div class="progress-container">
+          <span>0:58</span>
+          <input type="range" class="progress-bar" value="20">
+          <span>3:20</span>
+        </div>
+      </div>
+  
+      <!-- Right: Extra Controls -->
+      <div class="right-icons">
+        <i class="bi bi-pencil"></i>
+        <i class="bi bi-list"></i>
+        <i class="bi bi-speaker"></i>
+        <i class="bi bi-volume-up"></i>
+        <input type="range" class="volume-bar">
+        <i class="bi bi-arrows-angle-expand"></i>
+      </div>
+    </footer>
+    <script>
+      const leftSidebar = document.getElementById("leftSidebar");
+      const toggleLeft = document.getElementById("toggleLeft");
+
+      const rightSidebar = document.getElementById("rightSidebar");
+      const toggleRight = document.getElementById("toggleRight");
+      const closeRight = document.getElementById("closeRight");
+
+      toggleLeft.addEventListener("click", () => {
+        leftSidebar.classList.toggle("left-collapsed");
+      });
+
+      toggleRight.addEventListener("click", () => {
+        rightSidebar.classList.remove("right-collapsed");
+      });
+
+      closeRight.addEventListener("click", () => {
+        rightSidebar.classList.add("right-collapsed");
+      });
+    </script>
+  </body>
+</html>
