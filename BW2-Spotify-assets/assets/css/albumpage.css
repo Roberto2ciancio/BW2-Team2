@@ -1,0 +1,85 @@
+.container {
+  background-color: #c7a008;
+  padding-bottom: 10px;
+  height: auto;
+}
+
+h1 {
+  font-size: 70px;
+  letter-spacing: -3px;
+  font-weight: 900;
+}
+
+#anno-uscita {
+  width: 4%;
+  border-radius: 20px;
+}
+
+.album-cover {
+  max-width: 100%;
+  height: auto;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #1db954;
+  border: none;
+  border-radius: 50%;
+
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+.play-btn:active {
+  transform: scale(0.9);
+}
+
+.heart-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.1);
+}
+
+.arrow-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.1);
+}
+
+.doots-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.doots-btn:hover {
+  transform: scale(1.1);
+}
+
+h2 {
+  letter-spacing: 2px;
+}
