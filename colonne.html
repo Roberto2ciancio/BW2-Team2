@@ -12,13 +12,87 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="/BW2-Spotify-assets/assets/css/homepage.css">
-    <link rel="stylesheet" href="../BW2-Spotify-assets/assets/css/footer.css">
+    <link rel="stylesheet" href="/BW2-Spotify-assets/assets/css/homepage.css" />
+    <link rel="stylesheet" href="../BW2-Spotify-assets/assets/css/footer.css" />
     <link
-    rel="stylesheet"
-    href="../BW2-Spotify-assets/assets/css/albumpage.css"
-  />
+      rel="stylesheet"
+      href="../BW2-Spotify-assets/assets/css/albumpage.css"
+    />
     <style>
+      .content {
+        padding: 20px;
+      }
+      .hero {
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 40px;
+        border-radius: 10px;
+        text-align: left;
+        position: relative;
+      }
+      .verified-artist {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+      }
+      .verified-artist i {
+        margin-right: 8px;
+      }
+      .hero h1 {
+        margin-bottom: 10px;
+      }
+      .hero p {
+        margin: 0;
+      }
+      .song-img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+      .popolari-section {
+        margin-bottom: 30px;
+      }
+      .track-number {
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+        margin-right: 150px;
+        font-size: 0.9rem;
+        color: rgb(251, 254, 254);
+      }
+      .list-group-item.d-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .list-group-item.d-flex .spanTitolo {
+        flex-grow: 1;
+      }
+
+      /* Sezione Brano Preferito */
+      .fav-song {
+        display: flex;
+        align-items: center;
+      }
+
+      .fav-song img {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+
+      .fav-song span {
+        font-size: 0.9rem;
+        color: rgb(251, 254, 254);
+      }
       body {
         background-color: #121212;
         color: white;
@@ -200,110 +274,71 @@
           </ul>
         </nav>
 
-        <main class="col text-center">
-          <div class="container">
-            <div class="row">
-              <div
-                class=" mt-2 p-0 d-flex justify-content-between align-items-center"
-              >
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    class="bi bi-arrow-left-circle-fill ms-4 mt-2"
-                    viewBox="0 0 16 16"
-                    id="arrow-left"
-                  >
-                    <path
-                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    class="bi bi-arrow-right-circle-fill ms-1 mt-2"
-                    viewBox="0 0 16 16"
-                    id="arrow-right"
-                  >
-                    <path
-                      d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
-                    />
-                  </svg>
-                </div>
-                <div class="dropdown">
-                  <button
-                    class="btn bg-black rounded-5 mx-4 mt-2 text-white dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    id="dropdown"
-                  >
-                    <i class="bi bi-person-circle"></i>
-                    Lidia Nautilus...
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
-                  </ul>
-                </div>
+        <main class="col text-center container-fluid">
+          <div class="row">
+            <!-- Sezione Hero -->
+            <section
+              class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 hero"
+            >
+              <!-- Icona e testo "Artista Verificato" -->
+              <div class="verified-artist">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>Artista Verificato</span>
               </div>
-              <div class="container mt-4 ms-0">
-                <div class="row ">
-                    <div class=" col col-12 col-md-4 col-lg-4 text-center">
-                        <img src="../BW2-Spotify-assets/assets/imgs/search/image-13.jpeg" alt="Album Cover" class="album-cover " width="80%">
-                    </div>
-                    <div class="col-md-8 album-info">
-                        <p class="mt-5 text-light" id="album"><b>ALBUM</b></p>
-                        <h1 class="text-light" id="album-title">Gioventù Brucata</h1>
-                        <div class="mt-5">
-                   <p class="text-light" > <img src="../BW2-Spotify-assets/assets/imgs/search/image-15.jpg"  class=" text-light " id="anno-uscita"> Pinguini tattici Nucleari</p>
-                    </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="d-flex align-items-center">
-                <button class="play-btn mt-5 ms-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right-fill  " viewBox="0 0 16 16">
-                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                    </svg>
+              <h1>Yellowcard</h1>
+              <p>3.433.158 ascoltatori mensili</p>
+            </section>
+
+            <!-- Sezione Brani Popolari e Pulsanti -->
+            <section class="col-12 mt-4 bg-dark text-white p-4">
+              <!-- Pulsanti sopra la lista "Popolari" -->
+              <div class="col-12 text-start hero-buttons mb-4">
+                <button class="btn rounded-5 btn-success">
+                  <i class="fa-solid fa-play"></i>
                 </button>
-                <button class=" heart-btn mt-5 ms-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart text-light " viewBox="0 0 16 16">
-                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-                  </svg>
-                </button>
-                <button class="arrow-btn mt-5 ms-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-down-circle " viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-                      </svg>
-                    </button>
-                   <button class="doots-btn mt-5 ms-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
-                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                    </svg>
-                   </button>
+                <button class="btn btn-outline-light">Following</button>
               </div>
-              <div class="d-flex align-items-center justify-content-between">
-                <h2 class="text-light fs-6 ps-4 mt-4  ms-3"># TITOLO</h2>
-                <h2 class="text-light fs-6 ps-4 mt-4 ">RIPRODUZIONI</h2>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-clock text-light mt-4 mx-5" viewBox="0 0 16 16">
-                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                </svg>
-              </div>
-              <hr class="text-light mt-3">
-              <div class="d-flex" id="list-music">
-                <ol>
-                  <li class="text-light fs-5 ms-4">ciao
-    
+
+              <!-- Titolo Brani Popolari -->
+              <h3 class="mt-4 text-light">Popolari</h3>
+
+              <div class="popolari-section">
+                <ul class="list-group list-unstyled mb-0">
+                  <!-- Esempio di brano popolare -->
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img src="" alt="Song" class="song-img" />
+                      <span class="spanTitolo">Brano Popolare 1</span>
+                    </div>
+                    <span class="track-number">1</span>
                   </li>
-                </ol>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img src="" alt="Song" class="song-img" />
+                      <span class="spanTitolo">Brano Popolare 2</span>
+                    </div>
+                    <span class="track-number">2</span>
+                  </li>
+                  <!-- Aggiungi altre canzoni qui -->
+                </ul>
               </div>
+
+              <!-- Sezione Brano Preferito -->
+              <h3 class="mt-4 text-light">Brano Preferito</h3>
+              <div class="fav-song">
+                <img
+                  src="../BW2-Spotify-assets/assets/imgs/search/image-11.jpg"
+                  alt="Brano Preferito"
+                  class="song-img"
+                />
+                <span>Ocean Avenue</span>
+              </div>
+            </section>
+          </div>
         </main>
 
         <nav
@@ -562,14 +597,18 @@
     <footer>
       <!-- Left: Song Info -->
       <div class="d-flex align-items-center song-info">
-        <img src="https://i.scdn.co/image/ab67616d0000b273c40cc20a0a44de4d786085cb" alt="cover" class="me-2">
+        <img
+          src="https://i.scdn.co/image/ab67616d0000b273c40cc20a0a44de4d786085cb"
+          alt="cover"
+          class="me-2"
+        />
         <div class="song-details">
           <div class="song-title">Fat Funny Friend</div>
           <div class="artist">Maddie Zahm</div>
         </div>
         <i class="bi bi-heart like-button"></i>
       </div>
-  
+
       <!-- Center: Player Controls -->
       <div class="player-controls">
         <div class="player-buttons">
@@ -581,40 +620,41 @@
         </div>
         <div class="progress-container">
           <span>0:58</span>
-          <input type="range" class="progress-bar" value="20">
+          <input type="range" class="progress-bar" value="20" />
           <span>3:20</span>
         </div>
       </div>
-  
+
       <!-- Right: Extra Controls -->
       <div class="right-icons">
         <i class="bi bi-pencil"></i>
         <i class="bi bi-list"></i>
         <i class="bi bi-speaker"></i>
         <i class="bi bi-volume-up"></i>
-        <input type="range" class="volume-bar">
+        <input type="range" class="volume-bar" />
         <i class="bi bi-arrows-angle-expand"></i>
       </div>
     </footer>
     <script>
-      const leftSidebar = document.getElementById("leftSidebar");
-      const toggleLeft = document.getElementById("toggleLeft");
+      const leftSidebar = document.getElementById("leftSidebar")
+      const toggleLeft = document.getElementById("toggleLeft")
 
-      const rightSidebar = document.getElementById("rightSidebar");
-      const toggleRight = document.getElementById("toggleRight");
-      const closeRight = document.getElementById("closeRight");
+      const rightSidebar = document.getElementById("rightSidebar")
+      const toggleRight = document.getElementById("toggleRight")
+      const closeRight = document.getElementById("closeRight")
 
       toggleLeft.addEventListener("click", () => {
-        leftSidebar.classList.toggle("left-collapsed");
-      });
+        leftSidebar.classList.toggle("left-collapsed")
+      })
 
       toggleRight.addEventListener("click", () => {
-        rightSidebar.classList.remove("right-collapsed");
-      });
+        rightSidebar.classList.remove("right-collapsed")
+      })
 
       closeRight.addEventListener("click", () => {
-        rightSidebar.classList.add("right-collapsed");
-      });
+        rightSidebar.classList.add("right-collapsed")
+      })
     </script>
+    <script src="./script.js"></script>
   </body>
 </html>

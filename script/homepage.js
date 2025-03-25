@@ -44,8 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
       card.classList.add("col-2", "p-3", "rounded-2")
       card.setAttribute("data-artist-id", artista.id)
 
-      card.innerHTML = `<div class="col-4 "><div id="card-home" class="p-2 g-col-4 d-flex flex-row my-1 text-start "> <img class="col-2 w-100" src=" ${artista.image}" alt="${artista.name}"> <p class="col-10 fs-1 text-light ps-2" >${artista.name}</p></div></div>
-            
+      card.innerHTML = `
+            <img src="${artista.image}" alt="${artista.name}" class="w-100 rounded-1">
+            <h6 class="mt-1 text-light fw-semibold">${artista.name}</h6>
+            <p class="text-light">Artista Popolare</p>
           `
 
       // Aggiungi l'evento di click per ogni card
