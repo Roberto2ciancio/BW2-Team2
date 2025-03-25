@@ -10,27 +10,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const artistApiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}`
 
   fetch(artistApiUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Errore nel recupero dei dati dell'artista.")
+      }
+      return response.json()
+    })
     .then((data) => {
       console.log("Dati Artista:", data)
-      document.querySelector(".hero h1").textContent = data.name
-      document.querySelector(
-        ".hero p"
-      ).textContent = `${data.nb_fan.toLocaleString()} ascoltatori mensili`
-      document.querySelector(
-        ".hero"
-      ).style.backgroundImage = `url(${data.picture_xl})`
 
+      // Popolamento dei dati dell'artista nella pagina
+      const heroSection = document.querySelector(".hero")
+      if (heroSection) {
+        document.querySelector(".hero h1").textContent = data.name
+        document.querySelector(
+          ".hero p"
+        ).textContent = `${data.nb_fan.toLocaleString()} ascoltatori mensili`
+        heroSection.style.backgroundImage = `url(${data.picture_xl})`
+      }
+
+      // Caricamento delle canzoni popolari
       const topTracksApiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/top?limit=5`
 
       fetch(topTracksApiUrl)
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Errore nel recupero delle canzoni.")
+          }
+          return response.json()
+        })
         .then((songsData) => {
           console.log("Dati Canzoni:", songsData)
-          const songsList = document.querySelector(".popolari-section ul")
-          if (songsList) {
-            songsList.innerHTML = "" // Svuota la lista esistente
+          const songsList = document.querySelector(".popolari-section")
 
+          if (songsList) {
+            songsList.innerHTML = "" // Pulisce la lista
+
+            // Aggiungi i brani alla lista
             songsData.data.forEach((song, index) => {
               const songItem = document.createElement("li")
               songItem.classList.add(
@@ -42,32 +58,32 @@ document.addEventListener("DOMContentLoaded", () => {
               )
 
               songItem.innerHTML = `
-                    <img src="${song.album.cover_small}" alt="${
+                  <img src="${song.album.cover_small}" alt="${
                 song.title
               }" class="song-img" />
-                    <span class="ms-3 spanTitolo text-light">${index + 1}. ${
+                  <span class="ms-3 spanTitolo text-light">${index + 1}. ${
                 song.title
               }</span>
-                    <span class="track-number text-light">${song.rank.toLocaleString()}</span>
-                    <span class="ms-auto spanTemp text-light" id="song-duration-${index}">
-                      ${
-                        window.innerWidth < 768
-                          ? '<i class="fa-solid fa-ellipsis-v"></i>'
-                          : `${Math.floor(song.duration / 60)}:${(
-                              song.duration % 60
-                            )
-                              .toString()
-                              .padStart(2, "0")}`
-                      }
-                    </span>
-                  `
+                  <span class="track-number text-light">${song.rank.toLocaleString()}</span>
+                  <span class="ms-auto spanTemp text-light" id="song-duration-${index}">
+                    ${
+                      window.innerWidth < 768
+                        ? '<i class="fa-solid fa-ellipsis-v"></i>'
+                        : `${Math.floor(song.duration / 60)}:${(
+                            song.duration % 60
+                          )
+                            .toString()
+                            .padStart(2, "0")}`
+                    }
+                  </span>
+                `
               songsList.appendChild(songItem)
             })
           } else {
             console.error("Elemento .popolari-section ul non trovato.")
           }
 
-          // Funzione per aggiornare la durata delle canzoni
+          // Funzione per aggiornare le durate dei brani
           function updateSongDurations() {
             document.querySelectorAll(".spanTemp").forEach((span, index) => {
               const song = songsData.data[index]
@@ -83,12 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
             })
           }
 
-          // Aggiornamento iniziale della durata
+          // Inizializza le durate
           updateSongDurations()
 
-          // Event listener per aggiornare la durata durante il resize
+          // Gestisce il resize della finestra con debounce per evitare troppi aggiornamenti rapidi
+          let resizeTimeout
           window.addEventListener("resize", function () {
-            setTimeout(updateSongDurations, 100)
+            clearTimeout(resizeTimeout)
+            resizeTimeout = setTimeout(updateSongDurations, 100)
           })
         })
         .catch((error) =>
