@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Layout</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      body {
+        background-color: #121212;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      .sidebar,
+      .right-sidebar {
+        background: #000;
+        padding: 15px;
+        height: 100vh;
+      }
+
+      .navbar-nav {
+        font-size: 0.9rem;
+      }
+
+      .scroll-container {
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      .left-collapsed .nav-link,
+      .left-collapsed img,
+      .left-collapsed .navbar-nav .nav-item i + a {
+        display: none !important;
+      }
+
+      .left-collapsed {
+        width: 60px !important;
+        padding-left: 0 !important;
+      }
+
+      /* Sidebar destra - Toggle */
+      .right-collapsed .friend-activity,
+      .right-collapsed .bi-person-plus,
+      .right-collapsed .bi-x-lg {
+        display: none !important;
+      }
+
+      .toggle-pointer {
+        cursor: pointer;
+      }
+
+      .friend-activity {
+        padding-bottom: 1.5rem;
+      }
+
+      .track-info {
+        font-size: 0.7rem;
+        color: rgb(179, 179, 179);
+      }
+
+      .username {
+        font-size: 0.8rem;
+        color: rgb(179, 179, 179);
+      }
+
+      .timestamp {
+        font-size: 0.7rem;
+        color: rgb(179, 179, 179);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="leftSidebar"
+          class="col-md-2 scroll-container d-md-block d-none fw-bold px-3 sidebar"
+          style="color: rgb(179, 179, 179)"
+        >
+          <i
+            id="toggleLeft"
+            class="bi bi-three-dots fs-3 toggle-pointer"
+            style="color: white"
+          ></i>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-house-door-fill fs-4"></i>
+              <a class="nav-link mx-3" style="color: white" href="#">Home</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-search fs-4"></i>
+              <a class="nav-link mx-3" href="#">Cerca</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-music-note-list fs-4"></i>
+              <a class="nav-link mx-3" href="#">La tua Libreria</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav me-auto mt-4">
+            <li class="nav-item active d-flex d-inline-block">
+              <i class="bi bi-plus-square-fill fs-4"></i>
+              <a class="nav-link mx-3" href="#">Crea playlist</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <img
+                src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da840c489c9523ae48b2c3d96177"
+                class="mt-2"
+                height="25"
+                alt="favorites-logo"
+              />
+              <a class="nav-link mx-3" href="#">Brani che ti piacciono</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <i
+                class="bi bi-bookmark-fill fs-4"
+                style="color: rgb(11, 198, 97)"
+              ></i>
+              <a class="nav-link mx-3" href="#">I tuoi episodi</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav me-auto fw-light mt-4">
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🤘🏻 Enter Sandman</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">👻 Forever Ghost</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎸 Guitar Hero III</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎉 Be The Young</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >⚡️ Early stage emily syndrome (sett-ott 2022)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🎉 Be The Young</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >😶 "..." cit. Kimiko (lug-ago 2022)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">💃🏻🕺🏻🩰 Saggio vibes</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >🔥 Main character energy (mag-giu)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">☠️ The fucking mood</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🛬 Landing page(mar-apr 2022)</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">😆 2021 lol</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >🤔 Cosa cazzo vuol dire questa aftermazione (gen-feb 2021)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🍯 Honey and glass (nov-dic 2021)</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🦍 (Revenge) Training Arc</a>
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#"
+                >👾 Minecraft e Nintendo Switch (sep-oct 2021)</a
+              >
+            </li>
+            <li class="nav-item active d-flex d-inline-block">
+              <a class="nav-link" href="#">🍑 Culo 2021</a>
+            </li>
+          </ul>
+        </nav>
+
+        <main class="col text-center">
+          <h1>Main</h1>
+        </main>
+
+        <nav
+          id="rightSidebar"
+          class="scroll-container d-md-block d-none pt-4 right-sidebar col-md-2"
+        >
+          <div class="d-flex">
+            <h5
+              id="toggleRight"
+              class="me-auto fw-bold toggle-pointer"
+              style="color: white"
+            >
+              Attività amici
+            </h5>
+            <i
+              class="bi bi-person-plus mx-1 fs-5"
+              style="color: rgb(179, 179, 179)"
+            ></i>
+            <i
+              id="closeRight"
+              class="bi bi-x-lg mx-1 fs-5 toggle-pointer"
+              style="color: rgb(179, 179, 179)"
+            ></i>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://imagedelivery.net/LBWXYQ-XnKSYxbZ-NuYGqQ/8f6879a8-aa3e-432d-0411-6064cdeb7700/avatarhd"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Joel Miller"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Joel Miller
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  2 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                One of These Nights • The Eagles
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">One of These Nights</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://www.zbrushcentral.com/uploads/default/original/4X/f/f/b/ffbe57040d71003198861ea0bbec3de8bf05f1af.jpeg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Ellie Williams"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1" style="color: rgb(179, 179, 179)">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Ellie Williams
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  1 ora fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Chasing Cars • Snow Patrol
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Eyes Open</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://i.pinimg.com/736x/be/fb/6f/befb6f5e21b22f3a816eea5276b63d9b.jpg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Eren Jaeger"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Eren Jaeger
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  35 min fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                I Want to Break Free • Queen
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">The Works</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://i.pinimg.com/736x/ee/4c/d6/ee4cd699956f8dcf3134e120656b6ddd.jpg"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Eren Jaeger"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Armin Arlert
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  10 min fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Ocean • Led Zeppelin
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Houses Of The Holy</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://images.everyeye.it/img-notizie/l-attacco-giganti-cosplay-comandante-hanji-zoe-pioggia-v3-628353-1200x1200.webp"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Zoe Hanji"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Zoe Hanji
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  3 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Cough Syrup • Young the Giant
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Young the Giant</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="friend-activity d-flex mt-4 position-relative">
+            <img
+              src="https://preview.redd.it/03ch231bhabd1.jpeg?width=640&crop=smart&auto=webp&s=813ba9b15272899ae0b751156e3ee3ab60db0554"
+              height="50"
+              class="me-3 rounded-circle"
+              alt="Levi Ackerman"
+            />
+            <div class="flex-grow-1 position-relative">
+              <div class="fw-bold mb-1">
+                <div
+                  class="username"
+                  style="font-size: 0.8rem; color: rgb(179, 179, 179)"
+                >
+                  Levi Ackerman
+                </div>
+                <div
+                  class="timestamp position-absolute top-0 end-0"
+                  style="font-size: 0.7rem; color: rgb(179, 179, 179)"
+                >
+                  6 ore fa
+                </div>
+              </div>
+              <div
+                class="track-info mb-1"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                Dude (Looks Like a Lady) • Aerosmith
+              </div>
+              <div
+                class="track-info d-flex d-inline-block"
+                style="color: rgb(179, 179, 179); font-size: 0.7rem"
+              >
+                <i class="bi bi-disc-fill"></i>
+                <p class="ms-2">Permanent Vacation</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      const leftSidebar = document.getElementById("leftSidebar");
+      const toggleLeft = document.getElementById("toggleLeft");
+
+      const rightSidebar = document.getElementById("rightSidebar");
+      const toggleRight = document.getElementById("toggleRight");
+      const closeRight = document.getElementById("closeRight");
+
+      toggleLeft.addEventListener("click", () => {
+        leftSidebar.classList.toggle("left-collapsed");
+      });
+
+      toggleRight.addEventListener("click", () => {
+        rightSidebar.classList.remove("right-collapsed");
+      });
+
+      closeRight.addEventListener("click", () => {
+        rightSidebar.classList.add("right-collapsed");
+      });
+    </script>
+  </body>
+</html>
