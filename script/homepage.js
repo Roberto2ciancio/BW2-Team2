@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })
 
+// JS Sidebars //
 const leftSidebar = document.getElementById("leftSidebar");
 const toggleLeft = document.getElementById("toggleLeft");
 
