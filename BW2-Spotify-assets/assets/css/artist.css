@@ -147,7 +147,19 @@ main {
   display: flex;
   align-items: center;
 }
+/* Sezione Brano Preferito */
+.fav-song {
+  display: flex;
+  align-items: center;
+}
 
+.fav-song img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+}
 .fav-song img {
   width: 30px;
   height: 30px;
@@ -166,7 +178,23 @@ body {
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
+.fav-song span {
+  font-size: 0.9rem;
+  color: rgb(251, 254, 254);
+}
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
+.sidebar,
+.right-sidebar {
+  background: #000;
+  padding: 15px;
+  height: 100vh;
+}
 .sidebar,
 .right-sidebar {
   background: #000;
@@ -177,7 +205,14 @@ body {
 .navbar-nav {
   font-size: 0.9rem;
 }
+.navbar-nav {
+  font-size: 0.9rem;
+}
 
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+}
 .scroll-container {
   height: 100vh;
   overflow-y: auto;
@@ -188,7 +223,16 @@ body {
 .left-collapsed .navbar-nav .nav-item i + a {
   display: none !important;
 }
+.left-collapsed .nav-link,
+.left-collapsed img,
+.left-collapsed .navbar-nav .nav-item i + a {
+  display: none !important;
+}
 
+.left-collapsed {
+  width: 60px !important;
+  padding-left: 0 !important;
+}
 .left-collapsed {
   width: 60px !important;
   padding-left: 0 !important;
@@ -200,11 +244,23 @@ body {
 .right-collapsed .bi-x-lg {
   display: none !important;
 }
+/* Sidebar destra - Toggle */
+.right-collapsed .friend-activity,
+.right-collapsed .bi-person-plus,
+.right-collapsed .bi-x-lg {
+  display: none !important;
+}
 
 .toggle-pointer {
   cursor: pointer;
 }
+.toggle-pointer {
+  cursor: pointer;
+}
 
+.friend-activity {
+  padding-bottom: 1.5rem;
+}
 .friend-activity {
   padding-bottom: 1.5rem;
 }
@@ -213,9 +269,22 @@ body {
   font-size: 0.7rem;
   color: rgb(179, 179, 179);
 }
+.track-info {
+  font-size: 0.7rem;
+  color: rgb(179, 179, 179);
+}
 
 .username {
   font-size: 0.8rem;
+  color: rgb(179, 179, 179);
+}
+.username {
+  font-size: 0.8rem;
+  color: rgb(179, 179, 179);
+}
+
+.timestamp {
+  font-size: 0.7rem;
   color: rgb(179, 179, 179);
 }
 
