@@ -1,0 +1,124 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #181818;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .song-info,
+  .player-right-icons {
+    min-width: 200px;
+  }
+  
+  .song-info img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+  }
+  
+  .song-details {
+    font-size: 0.85rem;
+  }
+  
+  .song-details .artist {
+    color: #b3b3b3;
+    font-size: 0.75rem;
+  }
+  
+  .song-title {
+    color: white;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+  
+  .like-button {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #b3b3b3;
+    cursor: pointer;
+  }
+  
+  .center-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .center-controls i {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    cursor: pointer;
+  }
+  
+  #play-pause-btn {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .progress-bar {
+    width: 300px;
+    appearance: none;
+    height: 4px;
+    background: #535353;
+    border-radius: 2px;
+  }
+  
+  .progress-bar::-webkit-slider-thumb,
+  .volume-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    margin-top: -3px;
+  }
+  
+  .progress-bar::-moz-range-thumb,
+  .volume-bar::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    border: none;
+  }
+  
+  .player-right-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .player-right-icons i {
+    font-size: 1rem;
+    color: #b3b3b3;
+    cursor: pointer;
+  }
+  
+  .volume-bar {
+    width: 80px;
+    appearance: none;
+    height: 4px;
+    background: #535353;
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .player-right-icons,
+    .song-info {
+      display: none !important;
+    }
+  
+    .progress-bar {
+      width: 150px;
+    }
+  }
