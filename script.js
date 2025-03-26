@@ -66,15 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
               }</span>
                   <span class="track-number text-light">${song.rank.toLocaleString()}</span>
                   <span class="ms-auto spanTemp text-light" id="song-duration-${index}">
-                    ${
-                      window.innerWidth < 768
-                        ? '<i class="fa-solid fa-ellipsis-v"></i>'
-                        : `${Math.floor(song.duration / 60)}:${(
-                            song.duration % 60
-                          )
-                            .toString()
-                            .padStart(2, "0")}`
-                    }
+                    ${Math.floor(song.duration / 60)}:${(song.duration % 60)
+                .toString()
+                .padStart(2, "0")}
                   </span>
                 `
               songsList.appendChild(songItem)
@@ -82,32 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             console.error("Elemento .popolari-section ul non trovato.")
           }
-
-          // Funzione per aggiornare le durate dei brani
-          function updateSongDurations() {
-            document.querySelectorAll(".spanTemp").forEach((span, index) => {
-              const song = songsData.data[index]
-              if (window.innerWidth < 768) {
-                span.innerHTML = '<i class="fa-solid fa-ellipsis-v"></i>'
-              } else {
-                span.innerHTML = `${Math.floor(song.duration / 60)}:${(
-                  song.duration % 60
-                )
-                  .toString()
-                  .padStart(2, "0")}`
-              }
-            })
-          }
-
-          // Inizializza le durate
-          updateSongDurations()
-
-          // Gestisce il resize della finestra con debounce per evitare troppi aggiornamenti rapidi
-          let resizeTimeout
-          window.addEventListener("resize", function () {
-            clearTimeout(resizeTimeout)
-            resizeTimeout = setTimeout(updateSongDurations, 100)
-          })
         })
         .catch((error) =>
           console.error("Errore nel recupero delle canzoni:", error)
