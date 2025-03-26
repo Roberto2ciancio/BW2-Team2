@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  background-image: linear-gradient(180deg, #d5cc5e, #00000000);
+  /*background-image: linear-gradient(180deg, #d5cc5e, #00000000);*/
   padding-bottom: 10px;
   height: auto;
 }
@@ -164,3 +164,4 @@ h2 {
   font-size: 0.7rem;
   color: rgb(179, 179, 179);
 }
+
