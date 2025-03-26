@@ -1,0 +1,84 @@
+body {
+    background-color: #121212;
+    color: white;
+    padding-bottom: 110px;
+  }
+
+  .track {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+
+  .track:hover {
+    background-color: #1a1a1a;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #181818;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .song-info img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+  }
+
+  .song-details .artist {
+    color: #b3b3b3;
+    font-size: 0.75rem;
+  }
+
+  .like-button {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #b3b3b3;
+    cursor: pointer;
+  }
+
+  .audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .audio-controls i {
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  .progress-bar {
+    width: 300px;
+    appearance: none;
+    height: 4px;
+    background: #535353;
+    border-radius: 2px;
+  }
+
+  .progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    margin-top: -3px;
+  }
+
+  @media (max-width: 768px) {
+    .song-info {
+      display: none;
+    }
+    .progress-bar {
+      width: 100px;
+    }
+  }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotify Player Interattivo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../BW2-Spotify-assets/assets/css/newspotify.css">
+</head>
+
+  <body>
+  <div class="container mt-4">
+    <h3>Brani</h3>
+    <div class="track" onclick="updatePlayer('Fat Funny Friend', 'Maddie Zahm', 'https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
+      🎵 Fat Funny Friend – Maddie Zahm
+    </div>
+    <div class="track" onclick="updatePlayer('As It Was', 'Harry Styles', 'https://i.scdn.co/image/ab67616d00001e02d36c2dcb8ff8ef9d81e2bff6', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">
+      🎵 As It Was – Harry Styles
+    </div>
+    <div class="track" onclick="updatePlayer('Shivers', 'Ed Sheeran', 'https://i.scdn.co/image/ab67616d00001e021dfde7f92fd4848325723c3d', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">
+      🎵 Shivers – Ed Sheeran
+    </div>
+  </div>
+
+  <!-- Footer Player -->
+  <footer>
+    <!-- Left -->
+    <div class="d-flex align-items-center song-info">
+      <img id="player-cover" src="https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278" alt="cover" class="me-2">
+      <div class="song-details">
+        <div id="player-title" style="color: white;">Fat Funny Friend</div>
+        <div id="player-artist" class="artist">Maddie Zahm</div>
+      </div>
+      <i class="bi bi-heart like-button"></i>
+    </div>
+
+    <!-- Center: Controls -->
+    <div class="audio-controls">
+      <i id="play-pause-btn" class="bi bi-play-circle-fill" onclick="togglePlay()"></i>
+      <input type="range" id="progress-bar" class="progress-bar" min="0" max="100" value="0" onchange="seekAudio(this.value)">
+    </div>
+  </footer>
+
+  <!-- Audio element -->
+  <audio id="audio-player" preload="metadata"></audio>
+
+  <script src="../BW2-Spotify-assets/assets/css/spotify.js"></script>
+</body>
+</html>
