@@ -1,10 +1,90 @@
+@font-face {
+    font-family: "Circular";
+    src: url(../fonts/CircularStd-Black.otf);
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Circular";
+    src: url(../fonts/CircularStd-Book.otf);
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  body {
+    background-color: #121212 !important;
+    color: white;
+    overflow: hidden; 
+  }
+
+    main {
+    font-family: "Circular";
+    font-weight: 900;
+    }
+
+  .sidebar,
+  .right-sidebar {
+    background: #000;
+    padding: 15px;
+    height: 100vh;
+    font-family: "Circular";
+    font-weight: 400;
+  }
+
+  .navbar-nav {
+    font-size: 0.9rem;
+  }
+
+  .scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .left-collapsed .nav-link,
+  .left-collapsed img,
+  .left-collapsed .navbar-nav .nav-item i + a {
+    display: none !important;
+  }
+
+  .left-collapsed {
+    width: 60px !important;
+    padding-left: 0 !important;
+  }
+
+  /* Sidebar destra - Toggle */
+  .right-collapsed .friend-activity,
+  .right-collapsed .bi-person-plus,
+  .right-collapsed .bi-x-lg {
+    display: none !important;
+  }
+
+  .toggle-pointer {
+    cursor: pointer;
+  }
+
+  .friend-activity {
+    padding-bottom: 1.5rem;
+  }
+
+  .track-info {
+    font-size: 0.7rem;
+    color: rgb(179, 179, 179);
+  }
+
+  .username {
+    font-size: 0.8rem;
+    color: rgb(179, 179, 179);
+  }
+
+  .timestamp {
+    font-size: 0.7rem;
+    color: rgb(179, 179, 179);
+  }
+
 #btn-annunci {  
     font-size: 0.5em !important;
    
-}
-
-body {
-    background-color: rgb(23, 23, 23);
 }
 
 #card-home { 
