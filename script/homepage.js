@@ -31,50 +31,52 @@ document.addEventListener("DOMContentLoaded", function () {
       name: "Artista 6",
       image: "https://api.deezer.com/artist/2535/image",
     },
-  ]
+  ];
 
   // Seleziona il contenitore delle card
-  const artistCardsContainer = document.getElementById("artist-cards-container")
+  const artistCardsContainer = document.getElementById(
+    "artist-cards-container"
+  );
 
   // Verifica che l'elemento esista
   if (artistCardsContainer) {
     // Crea e aggiungi una card per ogni artista
     artisti.forEach((artista, i) => {
-      const col = document.createElement("div")
-      col.classList.add("col-4")
+      const col = document.createElement("div");
+      col.classList.add("col-4");
 
-      const card = document.createElement("div")
-      card.classList.add("p-2", "g-col-4", "d-flex", "flex-row", "my-1")
-      card.setAttribute("id", "card-home")
-      card.setAttribute("data-artist-id", artista.id)
+      const card = document.createElement("div");
+      card.classList.add("p-2", "g-col-4", "d-flex", "flex-row", "my-1");
+      card.setAttribute("id", "card-home");
+      card.setAttribute("data-artist-id", artista.id);
 
       card.innerHTML = `
         <img class="col-2" src="${artista.image}" alt="${artista.name}">
         <p class="col-10 fs-4 text-light ps-1">${artista.name}</p>
-      `
+      `;
 
-      col.appendChild(card)
-      artistCardsContainer.appendChild(col)
+      col.appendChild(card);
+      artistCardsContainer.appendChild(col);
 
-      const script = document.createElement("script")
-      script.src = `https://api.deezer.com/artist/${artista.id}?output=jsonp&callback=updateArtist${i}`
-      document.body.appendChild(script)
+      const script = document.createElement("script");
+      script.src = `https://api.deezer.com/artist/${artista.id}?output=jsonp&callback=updateArtist${i}`;
+      document.body.appendChild(script);
 
       window[`updateArtist${i}`] = function (data) {
-        artisti[i].name = data.name
-        card.querySelector("p").innerText = data.name
-        card.querySelector("img").alt = data.name
-      }
+        artisti[i].name = data.name;
+        card.querySelector("p").innerText = data.name;
+        card.querySelector("img").alt = data.name;
+      };
 
       // Aggiungi l'evento di click per ogni card
       card.addEventListener("click", () => {
-        window.location.href = `/artist.html?id=${artista.id}`
-      })
-    })
+        window.location.href = `/artist.html?id=${artista.id}`;
+      });
+    });
   } else {
-    console.error("Il contenitore per le card non è stato trovato.")
+    console.error("Il contenitore per le card non è stato trovato.");
   }
-})
+});
 
 // JS Sidebars //
 const leftSidebar = document.getElementById("leftSidebar");
