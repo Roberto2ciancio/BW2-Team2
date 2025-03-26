@@ -89,17 +89,3 @@ main {
 #card-home {
   background-color: rgb(45, 45, 45);
 }
-
-.bi-three-dots {
-  color: white;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.bi-three-dots {
-  transform: scale(1.5);
-}
