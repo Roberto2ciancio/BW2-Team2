@@ -190,3 +190,17 @@ main {
 #card-home { 
     background-color: rgb(45, 45, 45);
 }
+
+.doots-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+ 
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.doots-btn:hover {
+  transform: scale(1.5);
+}
