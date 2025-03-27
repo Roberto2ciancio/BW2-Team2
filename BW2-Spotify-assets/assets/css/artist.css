@@ -331,4 +331,15 @@ body {
   transform: scale(1.5);
 }
 
-/*  */
+.Btn2 {
+  border: none;
+  border-radius: 50%;
+
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.Btn2:hover {
+  transform: scale(1.2);
+}
