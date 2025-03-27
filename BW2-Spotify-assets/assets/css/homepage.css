@@ -194,3 +194,17 @@ main {
     border-bottom-left-radius: 15px;
   }
 }
+
+.doots-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+ 
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.doots-btn:hover {
+  transform: scale(1.5);
+}

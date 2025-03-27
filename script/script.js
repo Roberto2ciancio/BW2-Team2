@@ -54,18 +54,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 "d-flex",
                 "align-items-center",
                 "border-0",
-                "bg-dark"
+                "py-2"
               );
 
               songItem.innerHTML = `
                     <img src="${song.album.cover_small}" alt="${
                 song.title
               }" class="song-img" />
-                    <span class="ms-3 spanTitolo text-light">${index + 1}. ${
-                song.title
-              }</span>
-                    <span class="track-number text-light">${song.rank.toLocaleString()}</span>
-                    <span class="ms-auto spanTemp text-light" id="song-duration-${index}">
+                    <span class="col-6 ms-3 spanTitolo text-light fs-5 fw-semibold">${
+                      index + 1
+                    }. ${song.title}</span>
+                    <span class="col-3 track-number m-0 text-light fw-light">${song.rank.toLocaleString()}</span>
+                    <span class="col-3 ms-auto spanTemp text-light fw-light text-end" id="song-duration-${index}">
                       ${Math.floor(song.duration / 60)}:${(song.duration % 60)
                 .toString()
                 .padStart(2, "0")}
@@ -108,4 +108,3 @@ toggleRightText.addEventListener("click", () => {
   rightSidebar.classList.remove("hidden");
   toggleRightText.classList.add("d-none");
 });
-
