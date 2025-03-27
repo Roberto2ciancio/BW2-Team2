@@ -225,7 +225,7 @@
           </ul>
         </nav>
 
-        <main class="col scroll-container">
+        <main class="col scroll-container ">
           <!-- pseudo nav -->
         <div class="container d-none d-md-block">
           <div class="row">
@@ -246,7 +246,7 @@
                               <li><a class="dropdown-item" href="#">Profile</a></li>
                               <li id="toggleRightText"class="dropdown-item">Attività amici</li>
                               <li><a class="dropdown-item" href="#">Settings</a></li>
-                              <li><a class="dropdown-item" href="#">Log out</a></li>
+                              <li><a class="dropdown-item" href="logopage.html">Log out</a></li>
                             </ul>
                           </div>
                         </span>
@@ -268,7 +268,11 @@
             <P class="text-light">ascolta il nuovo singolo</P>
             <button type="button" class="btn btn-success rounded-5 px-4 py-2 text-dark">Play</button>
             <button type="button" class="btn btn-outline-light rounded-5  px-4 py-2 ms-3">Salva</button>
-            <button type="button" class="btn text-light rounded-5 px-4 py-2"><i class="bi bi-three-dots"></i></button>
+            <button class="doots-btn ms-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
+                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+              </svg>
+             </button>
         
         </div>
         </div>
@@ -288,7 +292,7 @@
         <p class="text-light justify-content-start ms-4">Musica</p>
         <p class="text-light ms-5">Podcast e show</p>
       </div>
-        <div class=" col-12 d-flex flex-wrap p-0 justify-content-center  ">
+        <div class="col-12  p-0  ">
             <div class="row gx-2 " id="artist-cards-container">
                 
             
@@ -303,12 +307,16 @@
 
 <div class="container ">
     <div class="row d-flex justify-content-evenly">
+      <div class="d-flex justify-content-between">
         <h2 class="text-light p-0 text-start my-2 mb-5 mt-4 ms-3 d-none d-md-block">Altro di ciò che ti piace</h2>
+
         <!--prova sezione card-->
 <div class="row d-flex justify-content-evenly" id="more-artist-cards">
   <!-- Qui verranno aggiunti gli artisti dinamicamente -->
 </div>
 <!--prova sezione card-->
+        
+
         
                 
                 
@@ -475,7 +483,7 @@
                   Armin Arlert
                 </div>
                 <div
-                  class="timestamp position-absolute top-0 end-0"
+                  class="timestamp fw-lighter position-absolute top-0 end-0"
                   style="font-size: 0.7rem; color: rgb(179, 179, 179)"
                 >
                   10 min fa

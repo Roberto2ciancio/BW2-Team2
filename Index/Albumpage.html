@@ -18,6 +18,7 @@
     rel="stylesheet"
     href="../BW2-Spotify-assets/assets/css/albumpage.css"
   />
+  <link rel="stylesheet" href="/BW2-Spotify-assets/assets/css/circular-font.css">
   </head>
   <body>
     <!-- Bottom navbar visibile solo su dispositivi piccoli -->
@@ -169,27 +170,23 @@
               <div
                 class=" mt-2 p-0 d-flex justify-content-between align-items-center"
               >
-              <span > 
+           
                 <div>
-                <a href="./Homepage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-4 text-dark fs-3"><i class="bi bi-arrow-left-circle-fill"></i></a> </span>
-                <a href="../artist.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-1 text-dark fs-3"><i class="bi bi-arrow-right-circle-fill"></i></a> </div></span>
+               <span> <a href="./Homepage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-4 text-dark fs-3"><i class="bi bi-arrow-left-circle-fill"></i></a> </span>
+               <span> <a href="../artist.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-1 text-dark fs-3"><i class="bi bi-arrow-right-circle-fill"></i></a> </span>
 
-                  <span>
+                </div>
                 <div class="dropdown">
-                  <button
-                    class="btn bg-dark rounded-5 mx-4 mt-2 text-white dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    id="dropdown"
-                  >
-                    <i class="bi bi-person-circle"></i>
-                    Lidia Nautilus...
+                  <button class="rounded-5 btn btn-black text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://images.everyeye.it/img-notizie/attack-on-titan-cosplay-strepitoso-mikasa-ackerman-pronta-sconfiggere-giganti-v6-726720-1200x1200.webp" height="40"
+                    class="rounded-circle"
+                    alt="Mikasa"></img>
+                    Mikasa Ackerman
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li id="toggleRightText"class="dropdown-item">Attività amici</li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                    <li><a class="dropdown-item" href="logopage.html">Log out</a></li>
                   </ul>
                 </div>
               </div>

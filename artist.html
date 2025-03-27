@@ -18,6 +18,7 @@
       href="./BW2-Spotify-assets/assets/css/newspotify.css"
     />
     <link rel="stylesheet" href="./BW2-Spotify-assets/assets/css/artist.css" />
+    <link rel="stylesheet" href="/BW2-Spotify-assets/assets/css/circular-font.css">
   </head>
   <body>
     <!-- Bottom navbar visibile solo su dispositivi piccoli -->
@@ -173,7 +174,7 @@
         </nav>
 
         <main
-          class="col text-center container-fluid scroll-container d-flex justify-content-center"
+          class="col text-center container-fluid scroll-container "
         >
           <div class="row">
             <div class="container">
@@ -185,91 +186,62 @@
                   style="min-height: 600px"
                 >
                   <!--frecce e user -->
-                  <div
-                    class="mt-2 p-0 d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        fill="currentColor"
-                        class="bi bi-arrow-left-circle-fill ms-4 mt-2 text-dark"
-                        viewBox="0 0 16 16"
-                        id="arrow-left"
-                      >
-                        <path
-                          d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-                        />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        fill="currentColor"
-                        class="bi bi-arrow-right-circle-fill ms-1 mt-2 text-dark"
-                        viewBox="0 0 16 16"
-                        id="arrow-right"
-                      >
-                        <path
-                          d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn bg-dark rounded-5 mx-4 mt-2 text-white dropdown-toggle"
-                        type="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        id="dropdown"
-                      >
-                        <i class="bi bi-person-circle"></i>
-                        Lidia Nautilus...
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
-                      </ul>
-                    </div>
-                  </div>
+ 
+                  <div class="container d-md-block start-0">
+                    <div class="row">
+                        <div class="col px-4  mt-2 p-0 d-flex justify-content-between align-items-center">
+                            <span > 
+                                <div>
+                                <a href="./logopage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-left-circle-fill"></i></a> </span>
+                                <a href="./Albumpage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-right-circle-fill"></i></a> </div></span>
+          
+                                  <span>
+                                      <div class="dropdown ">
+                                      <button class="rounded-5 btn btn-black text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://images.everyeye.it/img-notizie/attack-on-titan-cosplay-strepitoso-mikasa-ackerman-pronta-sconfiggere-giganti-v6-726720-1200x1200.webp" height="40"
+                                        class="rounded-circle"
+                                        alt="Mikasa"></img>
+                                        Mikasa Ackerman
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li id="toggleRightText"class="dropdown-item">Attività amici</li>
+                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                                      </ul>
+                                    </div>
+                                  </span>
+                          </div>
+                      </div>
+
                   <!-- Icona e testo "Artista Verificato" -->
-                  <div
-                    class="verified-artist d-flex flex-column bottom-0 justify-content-end align-items-start container-fluid p-4"
+                  <div id="hero-art"
+                    class="verified-artist d-flex flex-column  justify-content-end align-items-start container-fluid pb-4 px-4 position-absolute bottom-0 end-0"
                   >
                     <i class="fa-solid fa-check-circle"></i>
                     <span>Artista Verificato</span>
-                    <h1>Yellowcard</h1>
+                    <h1 class="fw-bold">Yellowcard</h1>
                     <p>3.433.158 ascoltatori mensili</p>
                   </div>
                 </section>
 
                 <!-- Sezione Brani Popolari e Pulsanti -->
-                <section class="col-12 bg-dark text-white p-4">
+                <section class="col-12 container-flex text-white p-4 ">
                   <!-- Pulsanti sopra la lista "Popolari" -->
-                  <div class="col-12 text-start hero-buttons mb-4">
+                  <div class="col-12 text-start hero-buttons mb-4 d-flex align-items-center just ms-2">
                     <button class="play-btn">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        fill="currentColor"
-                        class="bi bi-caret-right-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
-                        />
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right-fill  " viewBox="0 0 16 16">
+                          <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                       </svg>
-                    </button>
+                  </button>
                     <button class="btn btn-outline-light ms-4 rounded-3">
                       Following
                     </button>
 
-                    <button class="btn btn-dark ms-4 rounded-3 fs-3">
-                      <i class="bi bi-three-dots"></i>
-                    </button>
+                    <button class="doots-btn ms-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots " viewBox="0 0 16 16">
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                      </svg>
+                     </button>
                   </div>
                   <div class="container-fluid">
                     <div class="row">
