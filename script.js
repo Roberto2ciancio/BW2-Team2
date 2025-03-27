@@ -108,3 +108,4 @@ toggleRightText.addEventListener("click", () => {
   rightSidebar.classList.remove("hidden");
   toggleRightText.classList.add("d-none");
 });
+
