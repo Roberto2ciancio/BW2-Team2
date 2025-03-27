@@ -53,15 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 "list-group-item",
                 "d-flex",
                 "align-items-center",
-                "border-0",
+                "shadow-lg",
                 "py-2"
               );
 
               songItem.innerHTML = `
-                    <img src="${song.album.cover_small}" alt="${
+                    <img src="${song.album.cover_small}" class=fs-4 pb-5" alt="${
                 song.title
-              }" class="song-img" />
-                    <span class="col-6 ms-3 spanTitolo text-light fs-5 fw-semibold">${
+              }" class="song-img " />
+                    <span class="col-6 ms-3 spanTitolo text-light fs-5 fw-semibold fs-5 ">${
                       index + 1
                     }. ${song.title}</span>
                     <span class="col-3 track-number m-0 text-light fw-light">${song.rank.toLocaleString()}</span>

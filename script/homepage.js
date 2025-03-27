@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const col = document.createElement("div");
       col.classList.add("col-6", "col-md-4",); 
       const card = document.createElement("div");
-      card.classList.add("p-2", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
+      card.classList.add("rounded-start-4", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
       card.innerHTML = `
