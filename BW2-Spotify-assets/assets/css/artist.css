@@ -21,6 +21,10 @@ body {
 main {
   font-family: "Circular";
   font-weight: 900;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .sidebar,
@@ -292,3 +296,5 @@ body {
   font-size: 0.7rem;
   color: rgb(179, 179, 179);
 }
+
+/*  */
