@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.classList.add("rounded-start-4", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
+
       card.innerHTML = `
   <img class="w-auto" src="${artista.image}" alt="${artista.name}">
   <div class="ms-2 ps-1">
@@ -76,21 +77,72 @@ document.addEventListener("DOMContentLoaded", function () {
       card.addEventListener("click", () => {
         window.location.href = `/artist.html?id=${artista.id}`
       });
-      const songLink = card.querySelector(".song-title");
+const songLink = card.querySelector(".song-title");
+      songLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        try {
+          const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
+          const data = await response.json();
+
+          if (data && data.data.length > 0) {
+            const tracks = data.data.filter(track => track.preview);
+            window.playlist = tracks.map(track => ({
+              title: track.title,
+              artist: track.artist.name,
+              cover: track.album.cover_medium,
+              src: track.preview
+            }));
+            window.currentIndex = 0;
+
+            const first = window.playlist[0];
+            document.getElementById("player-title").textContent = first.title;
+            document.getElementById("player-artist").textContent = first.artist;
+            document.getElementById("player-cover").src = first.cover;
+            const audio = document.getElementById("audio-player");
+            audio.src = first.src;
+            audio.play();
+
+            const playBtn = document.getElementById("play-pause-btn");
+            playBtn.classList.remove("bi-play-circle-fill");
+            playBtn.classList.add("bi-pause-circle-fill");
+          }
+        } catch (err) {
+          console.error("Errore nel caricamento del brano dell'artista:", err);
+        }
+      });
+      
+    })
+  } else {
+    console.error("Il contenitore per le card non è stato trovato.")
+  }
+})
+
+
+
 songLink.addEventListener("click", async (e) => {
   e.preventDefault();
   e.stopPropagation();
   try {
-    const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=1`);
+    const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
     const data = await response.json();
-    const track = data.data[0];
 
-    if (track && track.preview) {
-      document.getElementById("player-title").textContent = track.title;
-      document.getElementById("player-artist").textContent = track.artist.name;
-      document.getElementById("player-cover").src = track.album.cover_medium;
+    if (data && data.data.length > 0) {
+      const tracks = data.data.filter(track => track.preview);
+      window.playlist = tracks.map(track => ({
+        title: track.title,
+        artist: track.artist.name,
+        cover: track.album.cover_medium,
+        src: track.preview
+      }));
+      window.currentIndex = 0;
+
+      const first = window.playlist[0];
+      document.getElementById("player-title").textContent = first.title;
+      document.getElementById("player-artist").textContent = first.artist;
+      document.getElementById("player-cover").src = first.cover;
       const audio = document.getElementById("audio-player");
-      audio.src = track.preview;
+      audio.src = first.src;
       audio.play();
 
       const playBtn = document.getElementById("play-pause-btn");
@@ -101,11 +153,6 @@ songLink.addEventListener("click", async (e) => {
     console.error("Errore nel caricamento del brano dell'artista:", err);
   }
 });
-    })
-  } else {
-    console.error("Il contenitore per le card non è stato trovato.")
-  }
-})
 
 document.addEventListener("DOMContentLoaded", function () {
   // Seleziona il contenitore della nuova sezione
@@ -115,27 +162,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const moreArtists = [
     {
       id: 13,
-      name: "Eminem",
+      name: "Daft Punk",
       image: "https://api.deezer.com/artist/13/image",
     },
     {
       id: 27,
-      name: "Daft Punk",
+      name: "Bruno Mars",
       image: "https://api.deezer.com/artist/27/image",
     },
     {
       id: 75798,
-      name: "Adele",
+      name: "Billie Eilish",
       image: "https://api.deezer.com/artist/75798/image",
     },
     {
       id: 144227,
-      name: "Katy Perry",
+      name: "Ed Sheeran",
       image: "https://api.deezer.com/artist/144227/image",
     },
     {
       id: 246791,
-      name: "Craig David",
+      name: "Imagine Dragons",
       image: "https://api.deezer.com/artist/246791/image",
     },
   ]
@@ -148,13 +195,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     moreArtists.forEach((artist) => {
       const card = document.createElement("div")
-      card.classList.add("col-2", "p-0", "mb-3") // Aggiungi mb-3 per dare un po' di spazio verticale
+      card.classList.add("col-12", "col-md-2", "p-0", "mb-3", "cards-container") // Aggiungi mb-3 per dare un po' di spazio verticale
 
       card.innerHTML = `
-        <div id="card-home-${artist.id}" class="p-1 rounded-2">
-          <img class="w-100 rounded-1" src="${artist.image}" alt="${artist.name}">
-          <h6 class="mt-2 text-light fw-semibold text-start">${artist.name}</h6>
-          <p class="text-light text-start">Artista Consigliato</p>
+        <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
+        
+        <div class="d-flex flex-column align-items-start h-100">
+          <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
+      
+          <h6 class="mt-3 ms-2 text-light  fw-semibold   ">${artist.name}</h6>
+          <p class=" ms-2 text-light ">Artista Consigliato</p>
+         </div>
+           <div class="d-md-none d-flex justify-content-between "> 
+           <div>
+          <span class="ms-2 text-success fs-1 "><i class="bi bi-heart-fill"></i></span>
+          <span class="justify-content-start"><i class="bi bi-three-dots-vertical fs-1"></i></span>
+          </div>
+          <div class="d-flex ">
+          <p class="fw-lighter mx-4 mt-2">16 brani</p>
+          <span><i class="bi bi-play-circle-fill text-dark fs-1 mx-3"></i></i></span>
+          </div>
+          
+          
+        </div>
+         
         </div>
       `
 
