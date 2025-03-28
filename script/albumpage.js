@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
               songItem.innerHTML = `
                 <span>${index + 1}. ${track.title}</span>
-                <span class="track-number text-light ms-3">${track.rank}</span>
-                <span class="text-light text-end">${Math.floor(
+                <span id="rank" class="track-number text-light ms-3">${track.rank}</span>
+                <span id="duration" class="text-light text-end">${Math.floor(
                   track.duration / 60
                 )}:${(track.duration % 60).toString().padStart(2, "0")}</span>
               `

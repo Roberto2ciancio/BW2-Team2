@@ -84,6 +84,12 @@ h1 {
   transition: transform 0.2s ease;
 }
 
+#list-music {
+  font-family: "Circular";
+  font-weight: 400;
+  font-style: normal;
+}
+
 .arrow-btn:hover {
   transform: scale(1.5);
 }
@@ -178,6 +184,8 @@ h2 {
   transform: scale(1.2);
 }
 
+
+
 @media (max-width: 768px) {
   .sidebar,
   .right-sidebar {
@@ -248,11 +256,12 @@ h2 {
 #clock{
   display: none;
 }
-
-
   
   #list-music {
     padding: 0 1rem;
+    font-family: "Circular";
+  font-weight: 400;
+  font-style: normal;
   }
 
   #list-music ol {
@@ -264,6 +273,10 @@ h2 {
     padding: 0.8rem 0;
     border-bottom: 1px solid #2a2a2a;
     font-size: 1rem;
+  }
+
+  #rank, #duration {
+    display: none;
   }
 
   .Btn2 {
