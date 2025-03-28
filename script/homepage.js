@@ -31,24 +31,28 @@ document.addEventListener("DOMContentLoaded", function () {
       name: "Artista 6",
       image: "https://api.deezer.com/artist/2535/image",
     },
-  ]
-
+  ];
 
   // Seleziona il contenitore delle card
-  const artistCardsContainer = document.getElementById("artist-cards-container")
+  const artistCardsContainer = document.getElementById(
+    "artist-cards-container"
+  );
 
-  
-
-
- 
   if (artistCardsContainer) {
     // Crea e aggiungi una card per ogni artista
     artisti.forEach((artista, i) => {
-
       const col = document.createElement("div");
-      col.classList.add("col-6", "col-md-4",); 
+      col.classList.add("col-6", "col-md-4");
       const card = document.createElement("div");
-      card.classList.add("rounded-start-4", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
+      card.classList.add(
+        "rounded-start-4",
+        "g-col-4",
+        "d-flex",
+        "flex-row",
+        "my-1",
+        "mb-2",
+        "mt-3"
+      );
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
 
@@ -61,8 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 `;
       col.appendChild(card);
       artistCardsContainer.appendChild(col);
-  
-     
+
       const script = document.createElement("script");
       script.src = `https://api.deezer.com/artist/${artista.id}?output=jsonp&callback=updateArtist${i}`;
       document.body.appendChild(script);
@@ -71,36 +74,30 @@ document.addEventListener("DOMContentLoaded", function () {
         card.querySelector("p").innerText = data.name;
         card.querySelector("img").alt = data.name;
       };
-  
 
       // Aggiungi l'evento di click per ogni card
       card.addEventListener("click", () => {
-        window.location.href = `/artist.html?id=${artista.id}`
+        window.location.href = `/artist.html?id=${artista.id}`;
       });
-const songLink = card.querySelector(".song-title");
+      const songLink = card.querySelector(".song-title");
       songLink.addEventListener("click", async (e) => {
         e.preventDefault();
         e.stopPropagation();
         try {
-          const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
+          const response = await fetch(
+            `https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=1`
+          );
           const data = await response.json();
+          const track = data.data[0];
 
-          if (data && data.data.length > 0) {
-            const tracks = data.data.filter(track => track.preview);
-            window.playlist = tracks.map(track => ({
-              title: track.title,
-              artist: track.artist.name,
-              cover: track.album.cover_medium,
-              src: track.preview
-            }));
-            window.currentIndex = 0;
-
-            const first = window.playlist[0];
-            document.getElementById("player-title").textContent = first.title;
-            document.getElementById("player-artist").textContent = first.artist;
-            document.getElementById("player-cover").src = first.cover;
+          if (track && track.preview) {
+            document.getElementById("player-title").textContent = track.title;
+            document.getElementById("player-artist").textContent =
+              track.artist.name;
+            document.getElementById("player-cover").src =
+              track.album.cover_medium;
             const audio = document.getElementById("audio-player");
-            audio.src = first.src;
+            audio.src = track.preview;
             audio.play();
 
             const playBtn = document.getElementById("play-pause-btn");
@@ -111,52 +108,15 @@ const songLink = card.querySelector(".song-title");
           console.error("Errore nel caricamento del brano dell'artista:", err);
         }
       });
-      
-    })
+    });
   } else {
-    console.error("Il contenitore per le card non è stato trovato.")
-  }
-})
-
-
-
-songLink.addEventListener("click", async (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  try {
-    const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
-    const data = await response.json();
-
-    if (data && data.data.length > 0) {
-      const tracks = data.data.filter(track => track.preview);
-      window.playlist = tracks.map(track => ({
-        title: track.title,
-        artist: track.artist.name,
-        cover: track.album.cover_medium,
-        src: track.preview
-      }));
-      window.currentIndex = 0;
-
-      const first = window.playlist[0];
-      document.getElementById("player-title").textContent = first.title;
-      document.getElementById("player-artist").textContent = first.artist;
-      document.getElementById("player-cover").src = first.cover;
-      const audio = document.getElementById("audio-player");
-      audio.src = first.src;
-      audio.play();
-
-      const playBtn = document.getElementById("play-pause-btn");
-      playBtn.classList.remove("bi-play-circle-fill");
-      playBtn.classList.add("bi-pause-circle-fill");
-    }
-  } catch (err) {
-    console.error("Errore nel caricamento del brano dell'artista:", err);
+    console.error("Il contenitore per le card non è stato trovato.");
   }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
   // Seleziona il contenitore della nuova sezione
-  const moreArtistsContainer = document.querySelector("#more-artist-cards")
+  const moreArtistsContainer = document.querySelector("#more-artist-cards");
 
   // Nuovi artisti da aggiungere
   const moreArtists = [
@@ -185,80 +145,63 @@ document.addEventListener("DOMContentLoaded", function () {
       name: "Imagine Dragons",
       image: "https://api.deezer.com/artist/246791/image",
     },
-  ]
+  ];
 
   // Verifica se il contenitore esiste
   if (moreArtistsContainer) {
     // Crea una riga per le card
-    const row = document.createElement("div")
-    row.classList.add("row", "d-flex", "justify-content-between")
+    const row = document.createElement("div");
+    row.classList.add("row", "d-flex", "justify-content-between");
 
     moreArtists.forEach((artist) => {
-      const card = document.createElement("div")
-      card.classList.add("col-12", "col-md-2", "p-0", "mb-3", "cards-container") // Aggiungi mb-3 per dare un po' di spazio verticale
+      const card = document.createElement("div");
+      card.classList.add("col-6", "col-lg", "p-0", "mb-3"); // Aggiungi mb-3 per dare un po' di spazio verticale
 
       card.innerHTML = `
-        <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
-        
-        <div class="d-flex flex-column align-items-start h-100">
-          <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
-      
-          <h6 class="mt-3 ms-2 text-light  fw-semibold   ">${artist.name}</h6>
-          <p class=" ms-2 text-light ">Artista Consigliato</p>
-         </div>
-           <div class="d-md-none d-flex justify-content-between "> 
-           <div>
-          <span class="ms-2 text-success fs-1 "><i class="bi bi-heart-fill"></i></span>
-          <span class="justify-content-start"><i class="bi bi-three-dots-vertical fs-1"></i></span>
-          </div>
-          <div class="d-flex ">
-          <p class="fw-lighter mx-4 mt-2">16 brani</p>
-          <span><i class="bi bi-play-circle-fill text-dark fs-1 mx-3"></i></i></span>
-          </div>
-          
-          
+        <div id="card-home-${artist.id}" class="p-1 rounded-2">
+          <img class="w-100 rounded-1" src="${artist.image}" alt="${artist.name}">
+          <h6 class=" p-1 mt-2 text-light fw-semibold text-start">${artist.name}</h6>
+          <p class=" p-1 fw-light text-light text-start">Artista Consigliato</p>
         </div>
-         
-        </div>
-      `
+      `;
 
       // Click per andare alla pagina dell'artista
       card.addEventListener("click", () => {
-        window.location.href = `Albumpage.html?artist_id=${artist.id}`
-      })
+        window.location.href = `Albumpage.html?artist_id=${artist.id}`;
+      });
 
       // Aggiungi la card alla riga
-      row.appendChild(card)
-    })
+      row.appendChild(card);
+    });
 
     // Aggiungi la riga di card al contenitore
-    moreArtistsContainer.appendChild(row)
+    moreArtistsContainer.appendChild(row);
   } else {
     console.error(
       "Il contenitore per la sezione 'Altro di ciò che ti piace' non è stato trovato."
-    )
+    );
   }
-})
+});
 
 // JS Sidebars //
-const leftSidebar = document.getElementById("leftSidebar")
-const toggleLeft = document.getElementById("toggleLeft")
+const leftSidebar = document.getElementById("leftSidebar");
+const toggleLeft = document.getElementById("toggleLeft");
 
 toggleLeft.addEventListener("click", () => {
-  leftSidebar.classList.toggle("left-collapsed")
-})
+  leftSidebar.classList.toggle("left-collapsed");
+});
 
-const toggleRightText = document.getElementById("toggleRightText")
-const rightSidebar = document.getElementById("rightSidebar")
-const closeRight = document.getElementById("closeRight")
+const toggleRightText = document.getElementById("toggleRightText");
+const rightSidebar = document.getElementById("rightSidebar");
+const closeRight = document.getElementById("closeRight");
 
 closeRight.addEventListener("click", () => {
-  rightSidebar.classList.add("hidden")
-  toggleRightText.classList.remove("d-none")
-})
+  rightSidebar.classList.add("hidden");
+  toggleRightText.classList.remove("d-none");
+});
 
 // Quando clicchi su "Attività amici" -> sidebar riappare, scritta scompare
 toggleRightText.addEventListener("click", () => {
-  rightSidebar.classList.remove("hidden")
-  toggleRightText.classList.add("d-none")
-})
+  rightSidebar.classList.remove("hidden");
+  toggleRightText.classList.add("d-none");
+});
