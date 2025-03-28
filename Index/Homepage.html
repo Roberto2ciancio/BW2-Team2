@@ -82,7 +82,7 @@
   </head>
   <body>
  <!-- Bottom navbar visibile solo su dispositivi piccoli -->
- <nav class="mobile-nav d-md-none fixed-bottom bg-dark border-top-dark">
+ <nav class="mobile-nav d-md-none fixed-bottom bg-black bg-gradient border-top-dark">
   <div class="d-flex justify-content-around p-2">
     <a
       href="#"
@@ -125,7 +125,7 @@
           <ul class="navbar-nav me-auto">
             <li class="nav-item active d-flex d-inline-block">
               <i class="bi bi-house-door-fill fs-4"></i>
-              <a class="nav-link mx-3" style="color: white" href="#">Home</a>
+              <a class="nav-link mx-3" style="color: white" href="/Index/Homepage.html">Home</a>
             </li>
             <li class="nav-item active d-flex d-inline-block">
               <i class="bi bi-search fs-4"></i>
@@ -619,9 +619,9 @@
 
     <!-- FOOTER PLAYER -->
   
-    <footer>
+    <footer class="d-flex flex-row justify-content-between">
       <!-- Info Brano + Copertina -->
-      <div class="song-info d-flex align-items-center">
+      <div class="col-3 song-info d-flex align-items-center">
         <img id="player-cover" src="" alt="Copertina brano" class="me-3" />
         <div class="song-details">
           <div id="player-title" class="song-title">Titolo Brano</div>
@@ -631,13 +631,13 @@
       </div>
     
       <!-- Controlli Centrali -->
-      <div class="center-controls">
+      <div class="center-controls col-6 d-flex">
         <div class="d-flex gap-3 align-items-center">
           <i id="prev-btn" class="bi bi-skip-start-fill"></i>
           <i id="play-pause-btn" class="bi bi-play-circle-fill"></i>
           <i id="next-btn" class="bi bi-skip-end-fill"></i>
         </div>
-        <div class="d-flex align-items-center gap-2 mt-1">
+        <div class="d-flex align-items-center gap-2 mt-1 col-12">
           <small id="current-time">0:00</small>
           <input id="progress-bar" type="range" min="0" max="100" value="0" class="progress-bar" onchange="seekAudio(this.value)">
           <small id="duration">0:00</small>

@@ -123,12 +123,20 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .player-right-icons,
-  .song-info {
+  .player-right-icons/*,
+  .song-info*/ {
     display: none !important;
   }
+}
 
-  .progress-bar {
-    width: 150px;
+@media screen and (max-width: 768px) {
+  footer {
+    margin-bottom: 110px;
+    border-radius: 20px;
+    max-width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 2%;
   }
 }
