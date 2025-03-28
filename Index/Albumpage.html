@@ -502,47 +502,49 @@
     </div>
 
     <!-- Footer Player -->
-  <footer>
-    <!-- Left -->
-    <div class="d-flex align-items-center song-info">
-      <img id="player-cover" src="https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278" alt="cover" class="me-2">
-      <div class="song-details">
-        <div id="player-title" style="color: white;">Fat Funny Friend</div>
-        <div id="player-artist" class="artist">Maddie Zahm</div>
+    <footer>
+      <!-- Info Brano + Copertina -->
+      <div class="song-info d-flex align-items-center">
+        <img id="player-cover" src="" alt="Copertina brano" class="me-3" />
+        <div class="song-details">
+          <div id="player-title" class="song-title">Titolo Brano</div>
+          <div id="player-artist" class="artist">Artista</div>
+        </div>
+        <i class="bi bi-heart like-button"></i>
       </div>
-      <i class="bi bi-heart like-button"></i>
-    </div>
-
-    <!-- Center: Controls -->
-    <div class="center-controls d-flex flex-column align-items-center text-center">
-    <div class="d-flex align-items-center justify-content-center gap-3 mb-1">
-      <i class="bi bi-shuffle text-success" style="cursor: pointer;"></i>
-      <i id="prev-btn" class="bi bi-skip-backward-fill" style="cursor: pointer;"></i>
-      <i id="play-pause-btn" class="bi bi-play-circle-fill" style="font-size: 2rem; cursor: pointer;" onclick="togglePlay()"></i>
-      <i id="next-btn" class="bi bi-skip-forward-fill" style="cursor: pointer;"></i>
-      <i class="bi bi-repeat text-success" style="cursor: pointer;"></i>
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <span id="current-time" style="font-size: 0.75rem;">0:00</span>
-      <input type="range" id="progress-bar" class="progress-bar" min="0" max="100" value="0" onchange="seekAudio(this.value)">
-      <span id="duration" style="font-size: 0.75rem;">0:00</span>
-    </div>
-  </div>
-
-  <!-- Right: Icone extra + volume -->
-<div class="d-flex align-items-center player-right-icons">
-    <i class="bi bi-pencil"></i>
-    <i class="bi bi-text-paragraph"></i>
-    <i class="bi bi-pc-display"></i>
-    <i class="bi bi-volume-up"></i>
-    <input type="range" id="volume-slider" class="volume-bar" min="0" max="1" step="0.01" value="1" />
-    <i class="bi bi-arrows-angle-expand"></i>
-  </div>
+    
+      <!-- Controlli Centrali -->
+      <div class="center-controls">
+        <div class="d-flex gap-3 align-items-center">
+          <i id="prev-btn" class="bi bi-skip-start-fill"></i>
+          <i id="play-pause-btn" class="bi bi-play-circle-fill"></i>
+          <i id="next-btn" class="bi bi-skip-end-fill"></i>
+        </div>
+        <div class="d-flex align-items-center gap-2 mt-1">
+          <small id="current-time">0:00</small>
+          <input id="progress-bar" type="range" min="0" max="100" value="0" class="progress-bar" onchange="seekAudio(this.value)">
+          <small id="duration">0:00</small>
+        </div>
+      </div>
+    
+      <!-- Icone Extra + Volume -->
+      <div class="player-right-icons">
+        <i class="bi bi-mic"></i>
+        <i class="bi bi-layout-sidebar-inset-reverse"></i>
+        <i class="bi bi-pc-display"></i>
+        <i class="bi bi-volume-up"></i>
+        <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" class="volume-bar">
+        <i class="bi bi-arrows-angle-expand"></i>
+      </div>
+    
+      <!-- Audio -->
+      <audio id="audio-player"></audio>
+    </footer>
 
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../script/albumpage.js"></script>
     <script src="../script/script.js"></script>
-    <script src="../BW2-Spotify-assets/assets/css/spotify.js"></script>
+    <script src="../script/spotify.js"></script>
   </body>
 </html>

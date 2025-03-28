@@ -6,22 +6,30 @@ let playlist = [];
 let currentIndex = 0;
 
 async function fetchDeezerTracks(query = "taylor swift") {
-  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.deezer.com/search?q=${query}`)}`;
-  const response = await fetch(proxyUrl);
-  const data = await response.json();
-  const parsed = JSON.parse(data.contents);
-  playlist = parsed.data.map(track => ({
-    title: track.title,
-    artist: track.artist.name,
-    cover: track.album.cover_medium,
-    src: track.preview
-  }));
-  renderTrackList();
-  loadTrack(0);
+  const proxyUrl = `https://corsproxy.io/?https://api.deezer.com/search?q=${query}`;
+  try {
+    const response = await fetch(proxyUrl);
+    const data = await response.json();
+    if (!data || !data.data) {
+      console.error("Risposta inattesa dalla API Deezer:", data);
+      return;
+    }
+    playlist = data.data.map(track => ({
+      title: track.title,
+      artist: track.artist.name,
+      cover: track.album.cover_medium,
+      src: track.preview
+    }));
+    renderTrackList();
+    loadTrack(0);
+  } catch (error) {
+    console.error("Errore durante il fetch o il parsing della risposta:", error);
+  }
 }
 
 function renderTrackList() {
   const container = document.getElementById("track-list");
+  if (!container) return;
   container.innerHTML = "";
   playlist.forEach((track, i) => {
     const div = document.createElement("div");
@@ -47,6 +55,7 @@ function loadTrack(index) {
   progressBar.value = 0;
   document.getElementById("current-time").textContent = "0:00";
   document.getElementById("duration").textContent = "0:00";
+  togglePlay();
 }
 
 function togglePlay() {
@@ -98,18 +107,24 @@ document.getElementById("next-btn").addEventListener("click", () => {
   loadTrack(currentIndex);
 });
 
-document.getElementById("search-btn").addEventListener("click", () => {
-  const query = document.getElementById("search-input").value.trim();
-  if (query) {
-    fetchDeezerTracks(query);
-  }
-});
+// 🔒 Sicuro: solo se gli elementi di ricerca esistono
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
 
-document.getElementById("search-input").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    document.getElementById("search-btn").click();
-  }
-});
+if (searchInput && searchBtn) {
+  searchBtn.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      fetchDeezerTracks(query);
+    }
+  });
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      searchBtn.click();
+    }
+  });
+}
 
 // Caricamento iniziale
 fetchDeezerTracks("taylor swift");
