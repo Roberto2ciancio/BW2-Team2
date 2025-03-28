@@ -26,9 +26,8 @@ body {
 }
 
 h1 {
-  font-size: 70px;
-  letter-spacing: -3px;
-  font-weight: 900;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 #anno-uscita {
@@ -39,6 +38,7 @@ h1 {
 .album-cover {
   max-width: 100%;
   height: auto;
+  margin-top: 70px
 }
 
 .play-btn {
@@ -176,4 +176,107 @@ h2 {
 
 .Btn2:hover {
   transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .sidebar,
+  .right-sidebar {
+    display: none !important;
+  }
+
+  .album-cover {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .album-info {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  #album {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  h1#album-title {
+    font-size: 1.8rem;
+    font-family: "Circular";
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  #anno-uscita {
+    width: 8%;
+    margin-right: 0.3rem;
+    margin-top: 0px !important;
+  }
+
+  .d-flex.align-items-center {
+    position: relative;
+    
+  }
+
+.heart-btn, .arrow-btn {
+  padding-right: 20px;
+}
+
+.heart-btn {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+  .play-btn{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    height:50px;
+    width:50px;
+  }
+
+  .d-flex.align-items-center.justify-content-between,
+  h2 {
+    display: none;
+  }
+
+.play-btn{
+  align-self: flex-end;
+}
+
+#clock{
+  display: none;
+}
+
+
+  
+  #list-music {
+    padding: 0 1rem;
+  }
+
+  #list-music ol {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  #list-music li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 1rem;
+  }
+
+  .Btn2 {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .Btn2 img {
+    height: 32px;
+    margin-right: 0.5rem;
+  }
+
+  footer {
+    display: none;
+  }
 }
