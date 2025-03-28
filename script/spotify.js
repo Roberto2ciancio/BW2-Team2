@@ -1,43 +1,47 @@
 const audio = document.getElementById("audio-player");
 const playPauseBtn = document.getElementById("play-pause-btn");
 const progressBar = document.getElementById("progress-bar");
-
 const volumeSlider = document.getElementById("volume-slider");
-volumeSlider.addEventListener("input", () => {
-  audio.volume = volumeSlider.value;
-});
-
-const playlist = [
-  {
-    title: "Fat Funny Friend",
-    artist: "Maddie Zahm",
-    cover: "https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  },
-  {
-    title: "As It Was",
-    artist: "Harry Styles",
-    cover: "https://i.scdn.co/image/ab67616d00001e02d36c2dcb8ff8ef9d81e2bff6",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-  },
-  {
-    title: "Shivers",
-    artist: "Ed Sheeran",
-    cover: "https://i.scdn.co/image/ab67616d00001e021dfde7f92fd4848325723c3d",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-  },
-];
-
+let playlist = [];
 let currentIndex = 0;
 
+async function fetchDeezerTracks(query = "taylor swift") {
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.deezer.com/search?q=${query}`)}`;
+  const response = await fetch(proxyUrl);
+  const data = await response.json();
+  const parsed = JSON.parse(data.contents);
+  playlist = parsed.data.map(track => ({
+    title: track.title,
+    artist: track.artist.name,
+    cover: track.album.cover_medium,
+    src: track.preview
+  }));
+  renderTrackList();
+  loadTrack(0);
+}
+
+function renderTrackList() {
+  const container = document.getElementById("track-list");
+  container.innerHTML = "";
+  playlist.forEach((track, i) => {
+    const div = document.createElement("div");
+    div.classList.add("track");
+    div.textContent = `🎵 ${track.title} – ${track.artist}`;
+    div.onclick = () => {
+      loadTrack(i);
+    };
+    container.appendChild(div);
+  });
+}
+
 function loadTrack(index) {
+  if (playlist.length === 0) return;
+  currentIndex = index;
   const track = playlist[index];
   document.getElementById("player-title").textContent = track.title;
   document.getElementById("player-artist").textContent = track.artist;
   document.getElementById("player-cover").src = track.cover;
   audio.src = track.src;
-
-  // Reset player UI
   playPauseBtn.classList.remove("bi-pause-circle-fill");
   playPauseBtn.classList.add("bi-play-circle-fill");
   progressBar.value = 0;
@@ -57,16 +61,12 @@ function togglePlay() {
   }
 }
 
-audio.addEventListener("timeupdate", () => {
+audio.addEventListener('timeupdate', () => {
   if (!isNaN(audio.duration)) {
     const progress = (audio.currentTime / audio.duration) * 100;
     progressBar.value = progress;
-    document.getElementById("current-time").textContent = formatTime(
-      audio.currentTime
-    );
-    document.getElementById("duration").textContent = formatTime(
-      audio.duration
-    );
+    document.getElementById("current-time").textContent = formatTime(audio.currentTime);
+    document.getElementById("duration").textContent = formatTime(audio.duration);
   }
 });
 
@@ -76,41 +76,40 @@ function seekAudio(value) {
 }
 
 function formatTime(seconds) {
+  if (seconds < 0) return "0:00";
   const min = Math.floor(seconds / 60);
-  const sec = Math.floor(seconds % 60)
-    .toString()
-    .padStart(2, "0");
+  const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
   return `${min}:${sec}`;
 }
 
-// Track click handler (da lista)
-function updatePlayer(title, artist, cover, src) {
-  const index = playlist.findIndex(
-    (t) => t.title === title && t.artist === artist
-  );
-  if (index !== -1) currentIndex = index;
-  loadTrack(currentIndex);
-}
+volumeSlider.addEventListener("input", () => {
+  audio.volume = volumeSlider.value;
+});
 
-// Previous / Next
 document.getElementById("prev-btn").addEventListener("click", () => {
+  if (playlist.length === 0) return;
   currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
   loadTrack(currentIndex);
 });
 
 document.getElementById("next-btn").addEventListener("click", () => {
+  if (playlist.length === 0) return;
   currentIndex = (currentIndex + 1) % playlist.length;
   loadTrack(currentIndex);
 });
 
-// Autoplay next on track end (opzionale)
-audio.addEventListener("ended", () => {
-  currentIndex = (currentIndex + 1) % playlist.length;
-  loadTrack(currentIndex);
-  audio.play();
-  playPauseBtn.classList.remove("bi-play-circle-fill");
-  playPauseBtn.classList.add("bi-pause-circle-fill");
+document.getElementById("search-btn").addEventListener("click", () => {
+  const query = document.getElementById("search-input").value.trim();
+  if (query) {
+    fetchDeezerTracks(query);
+  }
 });
 
-// Load first track by default
-loadTrack(currentIndex);
+document.getElementById("search-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    document.getElementById("search-btn").click();
+  }
+});
+
+// Caricamento iniziale
+fetchDeezerTracks("taylor swift");

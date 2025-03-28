@@ -579,73 +579,46 @@
       </div>
     </div>
 
-    <!-- Footer Player -->
-    <footer>
-      <!-- Left -->
-      <div class="d-flex align-items-center song-info">
-        <img
-          id="player-cover"
-          src="https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278"
-          alt="cover"
-          class="me-2"
-        />
-        <div class="song-details">
-          <div id="player-title" style="color: white">Fat Funny Friend</div>
-          <div id="player-artist" class="artist">Maddie Zahm</div>
-        </div>
-        <i class="bi bi-heart like-button"></i>
+    <!-- FOOTER PLAYER -->
+  <footer class="d-flex justify-content-between align-items-center">
+    <!-- Sinistra -->
+    <div class="d-flex align-items-center song-info">
+      <img id="player-cover" src="https://via.placeholder.com/56" class="me-2" />
+      <div class="song-details">
+        <div id="player-title" class="song-title">Nessun brano</div>
+        <div id="player-artist" class="artist">Seleziona dalla lista</div>
       </div>
+      <i class="bi bi-heart like-button"></i>
+    </div>
 
-      <!-- Center: Controls -->
-      <div
-        class="center-controls d-flex flex-column align-items-center text-center"
-      >
-        <div
-          class="d-flex align-items-center justify-content-center gap-3 mb-1"
-        >
-          <i class="bi bi-shuffle text-success" style="cursor: pointer"></i>
-          <i
-            id="prev-btn"
-            class="bi bi-skip-backward-fill"
-            style="cursor: pointer"
-          ></i>
-          <i
-            id="play-pause-btn"
-            class="bi bi-play-circle-fill"
-            style="font-size: 2rem; cursor: pointer"
-            onclick="togglePlay()"
-          ></i>
-          <i
-            id="next-btn"
-            class="bi bi-skip-forward-fill"
-            style="cursor: pointer"
-          ></i>
-          <i class="bi bi-repeat text-success" style="cursor: pointer"></i>
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <span id="current-time" style="font-size: 0.75rem">0:00</span>
-          <input
-            type="range"
-            id="progress-bar"
-            class="progress-bar"
-            min="0"
-            max="100"
-            value="0"
-            onchange="seekAudio(this.value)"
-          />
-          <span id="duration" style="font-size: 0.75rem">0:00</span>
-        </div>
+    <!-- Centro -->
+    <div class="center-controls">
+      <div class="d-flex align-items-center justify-content-center gap-3 mb-1">
+        <i class="bi bi-shuffle text-success"></i>
+        <i id="prev-btn" class="bi bi-skip-backward-fill"></i>
+        <i id="play-pause-btn" class="bi bi-play-circle-fill" onclick="togglePlay()"></i>
+        <i id="next-btn" class="bi bi-skip-forward-fill"></i>
+        <i class="bi bi-speaker text-success"></i>
       </div>
+      <div class="d-flex align-items-center gap-2">
+        <span id="current-time" style="font-size: 0.75rem;">0:00</span>
+        <input type="range" id="progress-bar" class="progress-bar" min="0" max="100" value="0" onchange="seekAudio(this.value)" />
+        <span id="duration" style="font-size: 0.75rem;">0:00</span>
+      </div>
+    </div>
 
-      <!-- Right: Extra Controls -->
-      <div class="right-icons">
-        <i class="bi bi-pencil"></i>
-        <i class="bi bi-list"></i>
-        <i class="bi bi-speaker"></i>
-        <i class="bi bi-volume-up"></i>
-        <input type="range" class="volume-bar" />
-        <i class="bi bi-arrows-angle-expand"></i>
-      </div>
+    <!-- Destra -->
+    <div class="player-right-icons">
+      <i class="bi bi-pencil"></i>
+      <i class="bi bi-text-paragraph"></i>
+      <i class="bi bi-pc-display"></i>
+      <i class="bi bi-volume-up"></i>
+      <input type="range" id="volume-slider" class="volume-bar" min="0" max="1" step="0.01" value="1" />
+      <i class="bi bi-arrows-fullscreen"></i>
+    </div>
+
+  <!-- AUDIO ELEMENT -->
+  <audio id="audio-player" preload="metadata"></audio>
     </footer>
     <!-- <script>
       const leftSidebar = document.getElementById("leftSidebar");
