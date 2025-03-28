@@ -160,6 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
 =======
       const card = document.createElement("div")
       card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container", ) // Aggiungi mb-3 per dare un po' di spazio verticale
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
       card.innerHTML = `
@@ -218,7 +221,10 @@ document.addEventListener("DOMContentLoaded", function () {
              
             </div>
           `
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
       // Click per andare alla pagina dell'artista
       card.addEventListener("click", () => {
