@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return
   }
 
-  // Fetch l'album dell'artista tramite l'API
+  // Fetch album dell'artista tramite l'API
   const albumApiUrl = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistId}/albums`
 
   fetch(albumApiUrl)
@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       console.log("Dati Album dell'artista:", data)
 
-      // Supponiamo che il primo album sia quello che vogliamo mostrare
+      if (!data.data || data.data.length === 0) {
+        console.error("Nessun album trovato per questo artista.")
+        return
+      }
+
+      // Seleziona il primo album
       const album = data.data[0]
 
       // Popola la pagina con i dati dell'album
@@ -36,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (albumCover) albumCover.src = album.cover_big
       if (albumYear) albumYear.textContent = album.release_date
 
-      // Fetch le tracce dell'album
-      const tracksApiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${album.id}/tracks`
+      // Fetch tracce dell'album
+      const tracksApiUrl = `https://striveschool-api.herokuapp.com/api/deezer/album/${album.id}`
 
       fetch(tracksApiUrl)
         .then((response) => {
@@ -49,25 +54,33 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((tracksData) => {
           console.log("Tracce dell'album:", tracksData)
 
+          if (!tracksData.tracks || tracksData.tracks.data.length === 0) {
+            console.error("Nessuna traccia trovata per questo album.")
+            return
+          }
+
           const songsList = document.querySelector("#list-music ol")
 
           if (songsList) {
-            songsList.innerHTML = "" // Pulisce la lista delle tracce
+            songsList.innerHTML = "" // Pulisce la lista
 
-            // Aggiungi le tracce alla lista
-            tracksData.data.forEach((track, index) => {
+            tracksData.tracks.data.forEach((track, index) => {
               const songItem = document.createElement("li")
-              songItem.classList.add("text-light", "fs-5", "ms-4")
+              songItem.classList.add(
+                "text-light",
+                "fs-5",
+                "ms-4",
+                "d-flex",
+                "justify-content-between",
+                "align-items-center"
+              )
 
-              // Aggiungi il titolo della canzone e altre informazioni
               songItem.innerHTML = `
                 <span>${index + 1}. ${track.title}</span>
-                <span class="track-number text-light ms-3">${track.rank}</span>
-                <span class="ms-auto text-light" id="song-duration-${index}">
-                  ${Math.floor(track.duration / 60)}:${(track.duration % 60)
-                .toString()
-                .padStart(2, "0")}
-                </span>
+                <span id="rank" class="track-number text-light ms-3">${track.rank}</span>
+                <span id="duration" class="text-light text-end">${Math.floor(
+                  track.duration / 60
+                )}:${(track.duration % 60).toString().padStart(2, "0")}</span>
               `
               songsList.appendChild(songItem)
             })
