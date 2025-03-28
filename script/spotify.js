@@ -69,6 +69,9 @@ function togglePlay() {
     playPauseBtn.classList.add("bi-play-circle-fill");
   }
 }
+playPauseBtn.addEventListener("click", () => {
+  togglePlay();
+});
 
 audio.addEventListener('timeupdate', () => {
   if (!isNaN(audio.duration)) {
