@@ -159,11 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container",); // Aggiungi mb-3 per dare un po' di spazio verticale
 =======
       const card = document.createElement("div")
-      card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container", ) // Aggiungi mb-3 per dare un po' di spazio verticale
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+      card.classList.add("col-12", "col-md-2", "p-0", "mb-3", "cards-container") // Aggiungi mb-3 per dare un po' di spazio verticale
 
       card.innerHTML = `
         <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
@@ -171,8 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="d-flex flex-column align-items-start h-100">
           <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
       
-          <h6 class="mt-3 ms-2 text-light fw-bold fw-semibold   ">${artist.name}</h6>
-          <p class=" ms-2 text-light fw-light ">Artista Consigliato</p>
+          <h6 class="mt-3 ms-2 text-light  fw-semibold   ">${artist.name}</h6>
+          <p class=" ms-2 text-light ">Artista Consigliato</p>
          </div>
            <div class="d-md-none d-flex justify-content-between "> 
            <div>
@@ -188,43 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
          
         </div>
-      `  if (moreArtistsContainer) {
-        // Crea una riga per le card
-        const row = document.createElement("div")
-        row.classList.add("row", "d-flex", "justify-content-between")
-    
-        moreArtists.forEach((artist) => {
-          const card = document.createElement("div")
-          card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container", ) // Aggiungi mb-3 per dare un po' di spazio verticale
-    
-          card.innerHTML = `
-            <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
-            
-            <div class="d-flex flex-column align-items-start h-100">
-              <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
-          
-              <h6 class="mt-3 ms-2 text-light fw-bold fw-semibold   ">${artist.name}</h6>
-              <p class=" ms-2 text-light fw-light ">Artista Consigliato</p>
-             </div>
-               <div class="d-md-none d-flex justify-content-between "> 
-               <div>
-              <span class="ms-2 text-success fs-1 "><i class="bi bi-heart-fill"></i></span>
-              <span class="justify-content-start"><i class="bi bi-three-dots-vertical fs-1"></i></span>
-              </div>
-              <div class="d-flex ">
-              <p class="fw-lighter mx-4 mt-2">16 brani</p>
-              <span><i class="bi bi-play-circle-fill text-dark fs-1 mx-3"></i></i></span>
-              </div>
-              
-              
-            </div>
-             
-            </div>
-          `
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
+      `
 
       // Click per andare alla pagina dell'artista
       card.addEventListener("click", () => {
