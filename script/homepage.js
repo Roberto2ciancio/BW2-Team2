@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
     artisti.forEach((artista, i) => {
 
       const col = document.createElement("div");
-      col.classList.add("col-6", "col-md-4",); 
+      col.classList.add("col-6", "col-md-6", "col-lg-4"); 
       const card = document.createElement("div");
-      card.classList.add("rounded-start-4", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
+      card.classList.add("rounded-2", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
       card.innerHTML = `
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     moreArtists.forEach((artist) => {
       const card = document.createElement("div")
-      card.classList.add("col-12", "col-md-2", "p-0", "mb-3", "cards-container") // Aggiungi mb-3 per dare un po' di spazio verticale
+      card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container", ) // Aggiungi mb-3 per dare un po' di spazio verticale
 
       card.innerHTML = `
         <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
@@ -128,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="d-flex flex-column align-items-start h-100">
           <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
       
-          <h6 class="mt-3 ms-2 text-light  fw-semibold   ">${artist.name}</h6>
-          <p class=" ms-2 text-light ">Artista Consigliato</p>
+          <h6 class="mt-3 ms-2 text-light fw-bold fw-semibold   ">${artist.name}</h6>
+          <p class=" ms-2 text-light fw-light ">Artista Consigliato</p>
          </div>
            <div class="d-md-none d-flex justify-content-between "> 
            <div>

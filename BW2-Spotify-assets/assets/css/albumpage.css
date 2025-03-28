@@ -58,7 +58,7 @@ h1 {
 }
 
 .play-btn:active {
-  transform: scale(0.9);
+  transform: scale(1);
 }
 
 .heart-btn {
