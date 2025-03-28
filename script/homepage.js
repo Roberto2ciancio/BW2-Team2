@@ -46,15 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
     artisti.forEach((artista, i) => {
 
       const col = document.createElement("div");
-      col.classList.add("col-6", "col-md-6", "col-lg-4"); 
+      col.classList.add("col-6", "col-md-4",); 
       const card = document.createElement("div");
-      card.classList.add("rounded-2", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
+      card.classList.add("rounded-start-4", "g-col-4", "d-flex", "flex-row", "my-1", "mb-2" , "mt-3"  ); 
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
+
       card.innerHTML = `
-        <img class="w-auto " src="${artista.image}" alt="${artista.name}">
-        <p class="col-12 col-sm-12 col-md-12 fs-4 text-light d-flex ms-2 ps-1 align-items-center mt-3">${artista.name}</p>
-      `;
+  <img class="w-auto" src="${artista.image}" alt="${artista.name}">
+  <div class="ms-2 ps-1">
+    <p class="fs-4 text-light d-flex align-items-center mt-3">${artista.name}</p>
+    <a href="#" class="song-title text-white text-decoration-none" data-artist-id="${artista.id}">▶ Ascolta brano</a>
+  </div>
+`;
       col.appendChild(card);
       artistCardsContainer.appendChild(col);
   
@@ -72,12 +76,83 @@ document.addEventListener("DOMContentLoaded", function () {
       // Aggiungi l'evento di click per ogni card
       card.addEventListener("click", () => {
         window.location.href = `/artist.html?id=${artista.id}`
-      })
+      });
+const songLink = card.querySelector(".song-title");
+      songLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        try {
+          const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
+          const data = await response.json();
+
+          if (data && data.data.length > 0) {
+            const tracks = data.data.filter(track => track.preview);
+            window.playlist = tracks.map(track => ({
+              title: track.title,
+              artist: track.artist.name,
+              cover: track.album.cover_medium,
+              src: track.preview
+            }));
+            window.currentIndex = 0;
+
+            const first = window.playlist[0];
+            document.getElementById("player-title").textContent = first.title;
+            document.getElementById("player-artist").textContent = first.artist;
+            document.getElementById("player-cover").src = first.cover;
+            const audio = document.getElementById("audio-player");
+            audio.src = first.src;
+            audio.play();
+
+            const playBtn = document.getElementById("play-pause-btn");
+            playBtn.classList.remove("bi-play-circle-fill");
+            playBtn.classList.add("bi-pause-circle-fill");
+          }
+        } catch (err) {
+          console.error("Errore nel caricamento del brano dell'artista:", err);
+        }
+      });
+      
     })
   } else {
     console.error("Il contenitore per le card non è stato trovato.")
   }
 })
+
+
+
+songLink.addEventListener("click", async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  try {
+    const response = await fetch(`https://corsproxy.io/?https://api.deezer.com/artist/${artista.id}/top?limit=5`);
+    const data = await response.json();
+
+    if (data && data.data.length > 0) {
+      const tracks = data.data.filter(track => track.preview);
+      window.playlist = tracks.map(track => ({
+        title: track.title,
+        artist: track.artist.name,
+        cover: track.album.cover_medium,
+        src: track.preview
+      }));
+      window.currentIndex = 0;
+
+      const first = window.playlist[0];
+      document.getElementById("player-title").textContent = first.title;
+      document.getElementById("player-artist").textContent = first.artist;
+      document.getElementById("player-cover").src = first.cover;
+      const audio = document.getElementById("audio-player");
+      audio.src = first.src;
+      audio.play();
+
+      const playBtn = document.getElementById("play-pause-btn");
+      playBtn.classList.remove("bi-play-circle-fill");
+      playBtn.classList.add("bi-pause-circle-fill");
+    }
+  } catch (err) {
+    console.error("Errore nel caricamento del brano dell'artista:", err);
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Seleziona il contenitore della nuova sezione
@@ -120,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     moreArtists.forEach((artist) => {
       const card = document.createElement("div")
-      card.classList.add("col-12", "col-md-6", "col-lg-2", "p-0", "mb-3", "cards-container", ) // Aggiungi mb-3 per dare un po' di spazio verticale
+      card.classList.add("col-12", "col-md-2", "p-0", "mb-3", "cards-container") // Aggiungi mb-3 per dare un po' di spazio verticale
 
       card.innerHTML = `
         <div id="card-home-${artist.id}" class="p-1 rounded-2 mb-3">
@@ -128,8 +203,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="d-flex flex-column align-items-start h-100">
           <img class="img-fluid " src="${artist.image}" alt="${artist.name}">
       
-          <h6 class="mt-3 ms-2 text-light fw-bold fw-semibold   ">${artist.name}</h6>
-          <p class=" ms-2 text-light fw-light ">Artista Consigliato</p>
+          <h6 class="mt-3 ms-2 text-light  fw-semibold   ">${artist.name}</h6>
+          <p class=" ms-2 text-light ">Artista Consigliato</p>
          </div>
            <div class="d-md-none d-flex justify-content-between "> 
            <div>
