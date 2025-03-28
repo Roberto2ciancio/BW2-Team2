@@ -2,8 +2,8 @@ const audio = document.getElementById("audio-player");
 const playPauseBtn = document.getElementById("play-pause-btn");
 const progressBar = document.getElementById("progress-bar");
 const volumeSlider = document.getElementById("volume-slider");
-let playlist = [];
-let currentIndex = 0;
+window.window.playlist = [];
+window.window.currentIndex = 0;
 
 async function fetchDeezerTracks(query = "queen") {
   const proxyUrl = `https://corsproxy.io/?https://api.deezer.com/search?q=${query}`;
@@ -14,7 +14,7 @@ async function fetchDeezerTracks(query = "queen") {
       console.error("Risposta inattesa dalla API Deezer:", data);
       return;
     }
-    playlist = data.data.map(track => ({
+    window.playlist = data.data.map(track => ({
       title: track.title,
       artist: track.artist.name,
       cover: track.album.cover_medium,
@@ -31,7 +31,7 @@ function renderTrackList() {
   const container = document.getElementById("track-list");
   if (!container) return;
   container.innerHTML = "";
-  playlist.forEach((track, i) => {
+  window.playlist.forEach((track, i) => {
     const div = document.createElement("div");
     div.classList.add("track");
     div.textContent = `🎵 ${track.title} – ${track.artist}`;
@@ -43,9 +43,9 @@ function renderTrackList() {
 }
 
 function loadTrack(index) {
-  if (playlist.length === 0) return;
-  currentIndex = index;
-  const track = playlist[index];
+  if (window.playlist.length === 0) return;
+  window.currentIndex = index;
+  const track = window.playlist[index];
   document.getElementById("player-title").textContent = track.title;
   document.getElementById("player-artist").textContent = track.artist;
   document.getElementById("player-cover").src = track.cover;
@@ -99,15 +99,15 @@ volumeSlider.addEventListener("input", () => {
 });
 
 document.getElementById("prev-btn").addEventListener("click", () => {
-  if (playlist.length === 0) return;
-  currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-  loadTrack(currentIndex);
+  if (window.playlist.length === 0) return;
+  window.currentIndex = (window.currentIndex - 1 + window.playlist.length) % window.playlist.length;
+  loadTrack(window.currentIndex);
 });
 
 document.getElementById("next-btn").addEventListener("click", () => {
-  if (playlist.length === 0) return;
-  currentIndex = (currentIndex + 1) % playlist.length;
-  loadTrack(currentIndex);
+  if (window.playlist.length === 0) return;
+  window.currentIndex = (window.currentIndex + 1) % window.playlist.length;
+  loadTrack(window.currentIndex);
 });
 
 // Sicuro: solo se gli elementi di ricerca esistono

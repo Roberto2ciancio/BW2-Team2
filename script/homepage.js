@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       card.setAttribute("id", "card-home");
       card.setAttribute("data-artist-id", artista.id);
+
       card.innerHTML = `
   <img class="w-auto" src="${artista.image}" alt="${artista.name}">
   <div class="ms-2 ps-1">
@@ -121,27 +122,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const moreArtists = [
     {
       id: 13,
-      name: "Eminem",
+      name: "Daft Punk",
       image: "https://api.deezer.com/artist/13/image",
     },
     {
       id: 27,
-      name: "Daft Punk",
+      name: "Bruno Mars",
       image: "https://api.deezer.com/artist/27/image",
     },
     {
       id: 75798,
-      name: "Adele",
+      name: "Billie Eilish",
       image: "https://api.deezer.com/artist/75798/image",
     },
     {
       id: 144227,
-      name: "Katy Perry",
+      name: "Ed Sheeran",
       image: "https://api.deezer.com/artist/144227/image",
     },
     {
       id: 246791,
-      name: "Craig David",
+      name: "Imagine Dragons",
       image: "https://api.deezer.com/artist/246791/image",
     },
   ];
