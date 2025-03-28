@@ -260,8 +260,8 @@ h2 {
   #list-music {
     padding: 0 1rem;
     font-family: "Circular";
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 300;
+  font-size: 0.3rem;
   }
 
   #list-music ol {
@@ -272,7 +272,7 @@ h2 {
   #list-music li {
     padding: 0.8rem 0;
     border-bottom: 1px solid #2a2a2a;
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
   #rank, #duration {
