@@ -5,7 +5,7 @@ const volumeSlider = document.getElementById("volume-slider");
 let playlist = [];
 let currentIndex = 0;
 
-async function fetchDeezerTracks(query = "taylor swift") {
+async function fetchDeezerTracks(query = "queen") {
   const proxyUrl = `https://corsproxy.io/?https://api.deezer.com/search?q=${query}`;
   try {
     const response = await fetch(proxyUrl);
@@ -110,7 +110,7 @@ document.getElementById("next-btn").addEventListener("click", () => {
   loadTrack(currentIndex);
 });
 
-// 🔒 Sicuro: solo se gli elementi di ricerca esistono
+// Sicuro: solo se gli elementi di ricerca esistono
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 
@@ -128,6 +128,3 @@ if (searchInput && searchBtn) {
     }
   });
 }
-
-// Caricamento iniziale
-fetchDeezerTracks("taylor swift");
