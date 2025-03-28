@@ -180,10 +180,10 @@
             <div class="container">
               <div class="row">
                 <!-- Sezione Hero -->
-                <section
+                <section 
                   id="hero-album"
                   class="col-12 hero d-flex flex-column justify-content-betwee p-0"
-                  style="min-height: 600px"
+                  style="min-height: 700px;"
                 >
                   <!--frecce e user -->
  
@@ -192,12 +192,12 @@
                         <div class="col px-4  mt-2 p-0 d-flex justify-content-between align-items-center">
                             <span > 
                                 <div>
-                                <a href="./logopage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-left-circle-fill"></i></a> </span>
-                                <a href="./Albumpage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-right-circle-fill"></i></a> </div></span>
+                                <a href="./Index/Albumpage.html" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-left-circle-fill"></i></a> </span>
+                                <a href="" class=" link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-dark fs-3"><i class="bi bi-arrow-right-circle-fill"></i></a> </div></span>
           
                                   <span>
                                       <div class="dropdown ">
-                                      <button class="rounded-5 btn btn-black text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://images.everyeye.it/img-notizie/attack-on-titan-cosplay-strepitoso-mikasa-ackerman-pronta-sconfiggere-giganti-v6-726720-1200x1200.webp" height="40"
+                                      <button class="rounded-5 btn btn-black text-white dropdown-toggle Btn2" type="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://images.everyeye.it/img-notizie/attack-on-titan-cosplay-strepitoso-mikasa-ackerman-pronta-sconfiggere-giganti-v6-726720-1200x1200.webp" height="40"
                                         class="rounded-circle"
                                         alt="Mikasa"></img>
                                         Mikasa Ackerman
@@ -218,7 +218,7 @@
                     class="verified-artist d-flex flex-column  justify-content-end align-items-start container-fluid pb-4 px-4 position-absolute bottom-0 end-0"
                   >
                     <i class="fa-solid fa-check-circle"></i>
-                    <span>Artista Verificato</span>
+                    <span><i class="bi bi-patch-check text-primary  "></i> Artista Verificato</span>
                     <h1 class="fw-bold">Yellowcard</h1>
                     <p>3.433.158 ascoltatori mensili</p>
                   </div>
@@ -244,10 +244,12 @@
                      </button>
                   </div>
                   <div class="container-fluid">
+                    
                     <div class="row">
                       <div class="col">
-                        <div class="row gap-4">
+                        <div class="row gap-4" style="height: 545px;">
                           <div class="col">
+                            
                             <!-- Titolo Brani Popolari -->
                             <h3 class="mt-4 text-light text-start mb-4">
                               Popolari
@@ -275,7 +277,9 @@
                                       >Brano Popolare 2</span
                                     >
                                   </div>
+                                 
                                   <span class="track-number">2</span>
+                  
                                 </li>
                                 <!-- Aggiungi altre canzoni qui -->
                               </ul>
@@ -288,7 +292,7 @@
                             </h3>
                             <div class="fav-song my-2">
                               <img
-                                src="../BW2-Spotify-assets/assets/imgs/search/image-11.jpg"
+                                src="../BW2-Spotify-assets/assets/imgs/search/image-11.jpg" style="width: 80px; height: 80px;" class="mt-2" 
                                 alt="Brano Preferito"
                                 class="song-img"
                               />
@@ -296,7 +300,7 @@
                             </div>
                             <div class="fav-song my-2">
                               <img
-                                src="../BW2-Spotify-assets/assets/imgs/search/image-14.jpg"
+                                src="../BW2-Spotify-assets/assets/imgs/search/image-14.jpg" style="width: 80px; height: 80px;" class="mt-2" 
                                 alt="Brano Preferito"
                                 class="song-img"
                               />
@@ -304,9 +308,8 @@
                             </div>
                             <div class="fav-song my-2">
                               <img
-                                src="../BW2-Spotify-assets/assets/imgs/search/image-12.jpg"
-                                alt="Brano Preferito"
-                                class="song-img"
+                                src="../BW2-Spotify-assets/assets/imgs/search/image-12.jpg" style="width: 80px; height: 80px;"  class="mt-2"                            alt="Brano Preferito"
+                                class="song-img "
                               />
                               <span>Richard Benson</span>
                             </div>
@@ -319,6 +322,7 @@
               </div>
             </div>
           </div>
+          
         </main>
 
         <nav
@@ -575,94 +579,45 @@
       </div>
     </div>
 
-    <!-- Footer Player -->
+    <!-- FOOTER PLAYER -->
     <footer>
-      <!-- Left -->
-      <div class="d-flex align-items-center song-info">
-        <img
-          id="player-cover"
-          src="https://i.scdn.co/image/ab67616d00001e024e2288e5c1e54885955bb278"
-          alt="cover"
-          class="me-2"
-        />
+      <!-- Info Brano + Copertina -->
+      <div class="song-info d-flex align-items-center">
+        <img id="player-cover" src="" alt="Copertina brano" class="me-3" />
         <div class="song-details">
-          <div id="player-title" style="color: white">Fat Funny Friend</div>
-          <div id="player-artist" class="artist">Maddie Zahm</div>
+          <div id="player-title" class="song-title">Titolo Brano</div>
+          <div id="player-artist" class="artist">Artista</div>
         </div>
         <i class="bi bi-heart like-button"></i>
       </div>
-
-      <!-- Center: Controls -->
-      <div
-        class="center-controls d-flex flex-column align-items-center text-center"
-      >
-        <div
-          class="d-flex align-items-center justify-content-center gap-3 mb-1"
-        >
-          <i class="bi bi-shuffle text-success" style="cursor: pointer"></i>
-          <i
-            id="prev-btn"
-            class="bi bi-skip-backward-fill"
-            style="cursor: pointer"
-          ></i>
-          <i
-            id="play-pause-btn"
-            class="bi bi-play-circle-fill"
-            style="font-size: 2rem; cursor: pointer"
-            onclick="togglePlay()"
-          ></i>
-          <i
-            id="next-btn"
-            class="bi bi-skip-forward-fill"
-            style="cursor: pointer"
-          ></i>
-          <i class="bi bi-repeat text-success" style="cursor: pointer"></i>
+    
+      <!-- Controlli Centrali -->
+      <div class="center-controls">
+        <div class="d-flex gap-3 align-items-center">
+          <i id="prev-btn" class="bi bi-skip-start-fill"></i>
+          <i id="play-pause-btn" class="bi bi-play-circle-fill"></i>
+          <i id="next-btn" class="bi bi-skip-end-fill"></i>
         </div>
-        <div class="d-flex align-items-center gap-2">
-          <span id="current-time" style="font-size: 0.75rem">0:00</span>
-          <input
-            type="range"
-            id="progress-bar"
-            class="progress-bar"
-            min="0"
-            max="100"
-            value="0"
-            onchange="seekAudio(this.value)"
-          />
-          <span id="duration" style="font-size: 0.75rem">0:00</span>
+        <div class="d-flex align-items-center gap-2 mt-1">
+          <small id="current-time">0:00</small>
+          <input id="progress-bar" type="range" min="0" max="100" value="0" class="progress-bar" onchange="seekAudio(this.value)">
+          <small id="duration">0:00</small>
         </div>
       </div>
-
-      <!-- Right: Extra Controls -->
-      <div class="right-icons">
-        <i class="bi bi-pencil"></i>
-        <i class="bi bi-list"></i>
-        <i class="bi bi-speaker"></i>
+    
+      <!-- Icone Extra + Volume -->
+      <div class="player-right-icons">
+        <i class="bi bi-mic"></i>
+        <i class="bi bi-layout-sidebar-inset-reverse"></i>
+        <i class="bi bi-pc-display"></i>
         <i class="bi bi-volume-up"></i>
-        <input type="range" class="volume-bar" />
+        <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="1" class="volume-bar">
         <i class="bi bi-arrows-angle-expand"></i>
       </div>
+    
+      <!-- Audio -->
+      <audio id="audio-player"></audio>
     </footer>
-    <!-- <script>
-      const leftSidebar = document.getElementById("leftSidebar");
-      const toggleLeft = document.getElementById("toggleLeft");
-
-      const rightSidebar = document.getElementById("rightSidebar");
-      const toggleRight = document.getElementById("toggleRight");
-      const closeRight = document.getElementById("closeRight");
-
-      toggleLeft.addEventListener("click", () => {
-        leftSidebar.classList.toggle("left-collapsed");
-      });
-
-      toggleRight.addEventListener("click", () => {
-        rightSidebar.classList.remove("right-collapsed");
-      });
-
-      closeRight.addEventListener("click", () => {
-        rightSidebar.classList.add("right-collapsed");
-      });
-    </script> -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -199,7 +199,7 @@ main {
   color: white;
   background-color: transparent;
   border: none;
- 
+
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -207,4 +207,38 @@ main {
 
 .doots-btn:hover {
   transform: scale(1.5);
+}
+
+.btn1 {
+  width: 80px;
+  height: 45px;
+  background-color: #1db954;
+  border: none;
+  border-radius: 42%;
+  font-weight: 600;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.btn1:hover {
+  transform: scale(1.3);
+  background-color: #1db954;
+}
+
+.btn:active {
+  transform: scale(1.2);
+}
+
+.Btn2 {
+  border: none;
+  border-radius: 50%;
+
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.Btn2:hover {
+  transform: scale(1.2);
 }
