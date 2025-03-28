@@ -115,27 +115,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const moreArtists = [
     {
       id: 13,
-      name: "Daft Punk",
+      name: "Eminem",
       image: "https://api.deezer.com/artist/13/image",
     },
     {
       id: 27,
-      name: "Bruno Mars",
+      name: "Daft Punk",
       image: "https://api.deezer.com/artist/27/image",
     },
     {
       id: 75798,
-      name: "Billie Eilish",
+      name: "Adele",
       image: "https://api.deezer.com/artist/75798/image",
     },
     {
       id: 144227,
-      name: "Ed Sheeran",
+      name: "Katy Perry",
       image: "https://api.deezer.com/artist/144227/image",
     },
     {
       id: 246791,
-      name: "Imagine Dragons",
+      name: "Craig David",
       image: "https://api.deezer.com/artist/246791/image",
     },
   ]
